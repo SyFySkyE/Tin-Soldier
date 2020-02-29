@@ -5,13 +5,21 @@ using UnityEngine;
 /// <summary>
 /// For implementing behavior when player looks at interactive objects.
 /// </summary>
-public class PlayerInteract : MonoBehaviour
+public class PlayerCheckInteract : MonoBehaviour
 {
     [Header("Raycast Parameters")]
     [Tooltip("How far the raycast will travel, in meters")]
     [SerializeField] private float maxRaycastDistance = 3f;
 
     private Camera mainCam;
+
+    public IInteractable InteractiveObjInSight
+    {
+        get { return this.interactiveObjInSight; }
+        private set { this.interactiveObjInSight = value; }
+    }
+
+    private IInteractable interactiveObjInSight;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +29,22 @@ public class PlayerInteract : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, maxRaycastDistance);
         Debug.DrawRay(mainCam.transform.position, mainCam.transform.forward * maxRaycastDistance, Color.cyan); // Must multiplay dir and distance in second parameter
+
+
+        RaycastHit hitInfo;
+        bool isRayHit = Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hitInfo, maxRaycastDistance);
+
+        IInteractable interactive = null;
+
+        if (isRayHit)
+        {
+            interactive = hitInfo.collider.gameObject.GetComponent<IInteractable>();
+        }
+
+        if (interactive != null)
+        {
+            interactiveObjInSight = interactive;
+        }
     }
 }
