@@ -31,20 +31,24 @@ public class PlayerCheckInteract : MonoBehaviour
     {
         Debug.DrawRay(mainCam.transform.position, mainCam.transform.forward * maxRaycastDistance, Color.cyan); // Must multiplay dir and distance in second parameter
 
-
         RaycastHit hitInfo;
         bool isRayHit = Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hitInfo, maxRaycastDistance);
 
-        IInteractable interactive = null;
-
         if (isRayHit)
         {
-            interactive = hitInfo.collider.gameObject.GetComponent<IInteractable>();
+            switch (hitInfo.transform.tag)
+            {
+                case "Interactable":
+                    interactiveObjInSight = hitInfo.collider.gameObject.GetComponent<IInteractable>();
+                    break;
+                default:
+                    interactiveObjInSight = null;
+                    break;
+            }           
         }
-
-        if (interactive != null)
+        else
         {
-            interactiveObjInSight = interactive;
+            interactiveObjInSight = null;
         }
     }
 }

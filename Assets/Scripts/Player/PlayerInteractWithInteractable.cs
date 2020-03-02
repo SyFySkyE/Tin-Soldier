@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class PlayerInteractWithInteractable : MonoBehaviour
 {
+    [SerializeField] private TMPro.TextMeshProUGUI interactText;
+
     private PlayerCheckInteract checkInteract;
 
     private void Start()
@@ -17,9 +19,17 @@ public class PlayerInteractWithInteractable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && checkInteract.InteractiveObjInSight != null)
+        if (checkInteract.InteractiveObjInSight != null)
         {
-            checkInteract.InteractiveObjInSight.Interact();
+            interactText.enabled = true;
+            if (Input.GetButtonDown("Interact"))
+            {
+                checkInteract.InteractiveObjInSight.Interact();
+            }
+        }
+        else
+        {
+            interactText.enabled = false;
         }
     }
 }
