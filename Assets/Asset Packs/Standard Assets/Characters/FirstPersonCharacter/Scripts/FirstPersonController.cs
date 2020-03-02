@@ -41,6 +41,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private float camResetTime;
+
+        public event Action<bool> OnSprint;
 
         // Use this for initialization
         private void Start()
@@ -81,8 +84,32 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+            ToggleSprint();
         }
 
+        private void ToggleSprint()
+        {
+            if (Input.GetButtonDown("Run"))
+            {
+                if (m_IsWalking)
+                {
+                    m_IsWalking = false;
+                    OnSprint?.Invoke(true);
+
+                }
+                else
+                {
+                    m_IsWalking = true;
+                    OnSprint?.Invoke(false);
+                }
+            }
+            
+            if (!m_IsWalking && Input.GetAxisRaw("Vertical") < 1) // If player is not holding down forward
+            {
+                m_IsWalking = true;
+                OnSprint?.Invoke(false);
+            }
+        }
 
         private void PlayLandingSound()
         {
@@ -97,17 +124,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
+
             Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
             Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
                                m_CharacterController.height/2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal);
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
+            //Debug.Log(m_CharacterController.velocity);
 
             if (m_CharacterController.isGrounded)
             {
@@ -191,11 +220,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                       (speed*(m_IsWalking ? 1f : m_RunstepLenghten)));
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_Camera.transform.localPosition.y - m_JumpBob.Offset();
+                camResetTime = 0;
+                
             }
             else
             {
+                if (camResetTime >= 1f)
+                {
+                    camResetTime = 1f;
+                }
+                else
+                {
+                    camResetTime += Time.fixedDeltaTime;
+                }
+                
+                
                 newCameraPosition = m_Camera.transform.localPosition;
-                newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
+                newCameraPosition.y = Mathf.Lerp(newCameraPosition.y, m_OriginalCameraPosition.y - m_JumpBob.Offset(), camResetTime);
             }
             m_Camera.transform.localPosition = newCameraPosition;
         }
@@ -205,15 +246,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float vertical = CrossPlatformInputManager.GetAxis("Vertical");            
 
             bool waswalking = m_IsWalking;
 
-#if !MOBILE_INPUT
-            // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
-#endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
