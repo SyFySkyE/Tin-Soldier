@@ -12,6 +12,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
+        [SerializeField] private bool sprintToggle = false;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
@@ -89,20 +90,41 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void ToggleSprint()
         {
-            if (Input.GetButtonDown("Run"))
+            switch (sprintToggle)
             {
-                if (m_IsWalking)
-                {
-                    m_IsWalking = false;
-                    OnSprint?.Invoke(true);
+                case true:
+                    if (Input.GetButtonDown("Run"))
+                    {
+                        if (m_IsWalking)
+                        {
+                            m_IsWalking = false;
+                            OnSprint?.Invoke(true);
 
-                }
-                else
-                {
-                    m_IsWalking = true;
-                    OnSprint?.Invoke(false);
-                }
+                        }
+                        else
+                        {
+                            m_IsWalking = true;
+                            OnSprint?.Invoke(false);
+                        }
+                    }
+                    break;
+                case false:
+                    if (Input.GetButton("Run"))
+                    {
+                        if (m_IsWalking)
+                        {
+                            m_IsWalking = false;
+                            OnSprint?.Invoke(true);
+                        }
+                    }
+                    else
+                    {
+                        m_IsWalking = true;
+                        OnSprint?.Invoke(false);
+                    }
+                    break;
             }
+            
             
             if (!m_IsWalking && Input.GetAxisRaw("Vertical") < 1) // If player is not holding down forward
             {

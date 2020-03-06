@@ -5,9 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Controls Camera behavior and state
 /// </summary>
-
-public enum CameraState { Normal, Sprint }
-
+/// 
 public class PlayerCamera : MonoBehaviour
 {
     [Header("FOV When player is sprinting")]
@@ -17,10 +15,8 @@ public class PlayerCamera : MonoBehaviour
     [Header("Speed of FOV lerp. How fast it changes during sprint in.")]
     [Range(0, 1)] [SerializeField] private float sprintInLerpSpeed = 0.1f;
     [Header("Speed of FOV lerp. How fast it changes during sprint out.")]
-    [Range(0, 1)] [SerializeField] private float sprintOutLerpSpeed = 0.01f;
-
-    private Animator playerAnim;
-    private CameraState currentState = CameraState.Normal;
+    [Range(0, 1)] [SerializeField] private float sprintOutLerpSpeed = 0.01f;    
+    
     private UnityStandardAssets.Characters.FirstPerson.FirstPersonController fpController;
     private Camera playerCam;
 
@@ -31,7 +27,6 @@ public class PlayerCamera : MonoBehaviour
         playerCam = GetComponentInChildren<Camera>();
         fpController = GetComponentInChildren<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
         fpController.OnSprint += FpController_OnSprint;
-        playerAnim = GetComponent<Animator>();
     }
 
     private void FpController_OnSprint(bool obj)
@@ -41,20 +36,24 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        if (fpOnSprint && currentState == CameraState.Normal)
+        CheckForSprint();
+    }
+
+    private void CheckForSprint()
+    {
+        if (fpOnSprint)
         {
-            if (playerCam.fieldOfView <= sprintFOV)
+            if (Mathf.Round(playerCam.fieldOfView) < sprintFOV)
             {
                 playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, sprintFOV, sprintInLerpSpeed);
             }
-            else
-            {
-                currentState = CameraState.Sprint;
-            }
         }
-        else if (!fpOnSprint && currentState == CameraState.Sprint)
+        else
         {
-
+            if (Mathf.Round(playerCam.fieldOfView) > initialFOV)
+            {
+                playerCam.fieldOfView = Mathf.Lerp(playerCam.fieldOfView, initialFOV, sprintOutLerpSpeed);
+            }
         }
     }
 }
