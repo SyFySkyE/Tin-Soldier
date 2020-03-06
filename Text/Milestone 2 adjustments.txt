@@ -1,0 +1,6 @@
+- Make the floor nonreflective
+- Use different color, scale lights to indirectly control them.
+- Decorate insides with more complex patterns
+- tribic culturs usually arrange themselves in a totem-esque or central meeting area
+	- Change tree in middle to be "mother gaia tree"
+	- Maybe emphasize the role of nature and gaia into culture
