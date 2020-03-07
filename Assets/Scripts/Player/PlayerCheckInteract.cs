@@ -13,10 +13,23 @@ public class PlayerCheckInteract : MonoBehaviour
 
     private Camera mainCam;
 
+    /// <summary>
+    /// Event raised when player looks at different IInteractable
+    /// </summary>
+
+    public static event System.Action LookedAtInteractableChanged;
+
     public IInteractable InteractiveObjInSight
     {
         get { return this.interactiveObjInSight; }
-        private set { this.interactiveObjInSight = value; }
+        private set 
+        { 
+            if (this.interactiveObjInSight != value)
+            {
+                this.interactiveObjInSight = value;
+                LookedAtInteractableChanged();
+            }            
+        }
     }
 
     private IInteractable interactiveObjInSight;

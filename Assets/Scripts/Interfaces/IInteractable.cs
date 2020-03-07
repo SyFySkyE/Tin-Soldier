@@ -3,5 +3,6 @@
 /// </summary>
 public interface IInteractable
 {
+    string DisplayText { get; }
     void Interact();
 }

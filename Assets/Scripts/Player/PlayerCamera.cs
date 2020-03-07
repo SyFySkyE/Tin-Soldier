@@ -5,7 +5,6 @@ using UnityEngine;
 /// <summary>
 /// Controls Camera behavior and state
 /// </summary>
-/// 
 public class PlayerCamera : MonoBehaviour
 {
     [Header("FOV When player is sprinting")]
