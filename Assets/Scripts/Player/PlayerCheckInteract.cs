@@ -17,7 +17,7 @@ public class PlayerCheckInteract : MonoBehaviour
     /// Event raised when player looks at different IInteractable
     /// </summary>
 
-    public static event System.Action LookedAtInteractableChanged;
+    public static event System.Action<IInteractable> LookedAtInteractableChanged;
 
     public IInteractable InteractiveObjInSight
     {
@@ -27,12 +27,14 @@ public class PlayerCheckInteract : MonoBehaviour
             if (this.interactiveObjInSight != value)
             {
                 this.interactiveObjInSight = value;
-                LookedAtInteractableChanged();
+                LookedAtInteractableChanged?.Invoke(interactiveObjInSight);
             }            
         }
     }
 
     private IInteractable interactiveObjInSight;
+
+    private int currentObjInSightHashCode;
 
     // Start is called before the first frame update
     void Start()
@@ -42,26 +44,38 @@ public class PlayerCheckInteract : MonoBehaviour
 
     private void FixedUpdate()
     {
+        InteractiveObjInSight = GetLookedAtInteractable();
+    }
+    /// <summary>
+    /// Raycasts camera foward for Iinteractable objs
+    /// </summary>
+    /// <returns>The first Iinteractable found, or null</returns>
+    private IInteractable GetLookedAtInteractable()
+    {
         Debug.DrawRay(mainCam.transform.position, mainCam.transform.forward * maxRaycastDistance, Color.cyan); // Must multiplay dir and distance in second parameter
 
         RaycastHit hitInfo;
-        bool isRayHit = Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hitInfo, maxRaycastDistance);
+        bool isRayHit = Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hitInfo, maxRaycastDistance);        
+
+        IInteractable interactiveObj = null;
 
         if (isRayHit)
         {
-            switch (hitInfo.transform.tag)
+            if (hitInfo.collider.GetHashCode() != currentObjInSightHashCode) // If the player is looking at the same object (defined by the hitInfo.collider's unique hashcode, don't use GetComponent every fixed cycle!! 
             {
-                case "Interactable":
-                    interactiveObjInSight = hitInfo.collider.gameObject.GetComponent<IInteractable>();
-                    break;
-                default:
-                    interactiveObjInSight = null;
-                    break;
-            }           
+                currentObjInSightHashCode = hitInfo.collider.GetHashCode(); // Set new hashcode
+                interactiveObj = hitInfo.collider.gameObject.GetComponent<IInteractable>();
+            }
+            else // If the player /is/ looking at the same object, just return what's already cached
+            {
+                return InteractiveObjInSight;
+            }
         }
-        else
+        else // If the player looks away, reset hashcode
         {
-            interactiveObjInSight = null;
+            currentObjInSightHashCode = 0;
         }
+
+        return interactiveObj;
     }
 }

@@ -7,29 +7,31 @@ using UnityEngine;
 /// </summary>
 public class PlayerInteractWithInteractable : MonoBehaviour
 {
-    [SerializeField] private TMPro.TextMeshProUGUI interactText;
+    private IInteractable lookedAtInteractable;
 
-    private PlayerCheckInteract checkInteract;
-
-    private void Start()
+    #region Event Subscriptions and Unsubscriptions
+    private void OnEnable()
     {
-        checkInteract = GetComponent<PlayerCheckInteract>();
+        PlayerCheckInteract.LookedAtInteractableChanged += OnLookedAtInteractableChange;
     }
+
+    private void OnDisable()
+    {
+        PlayerCheckInteract.LookedAtInteractableChanged -= OnLookedAtInteractableChange;
+    }
+    #endregion
 
     // Update is called once per frame
     void Update()
     {
-        if (checkInteract.InteractiveObjInSight != null)
+        if (Input.GetButtonDown("Interact") && lookedAtInteractable != null)
         {
-            interactText.enabled = true;
-            if (Input.GetButtonDown("Interact"))
-            {
-                checkInteract.InteractiveObjInSight.Interact();
-            }
-        }
-        else
-        {
-            interactText.enabled = false;
-        }
+            lookedAtInteractable.Interact();
+        }   
+    }
+
+    private void OnLookedAtInteractableChange(IInteractable newObjLookedAt)
+    {
+        lookedAtInteractable = newObjLookedAt;
     }
 }
