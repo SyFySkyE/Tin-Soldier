@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5efa97c2f5c7c48a4944f392c3268d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: {fileID: 0}
 --- !u!114 &209438461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1989715f247104e908016384eaec09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialFOV: 60
+  sprintFOV: 75
+  sprintInLerpSpeed: 0.05
+  sprintOutLerpSpeed: 0.1
 --- !u!136 &1194021093
 CapsuleCollider:
   m_ObjectHideFlags: 0

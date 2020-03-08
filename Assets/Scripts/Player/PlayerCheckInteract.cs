@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// For implementing behavior when player looks at interactive objects.
 /// </summary>
+[RequireComponent(typeof(Camera))]
 public class PlayerCheckInteract : MonoBehaviour
 {
     [Header("Raycast Parameters")]

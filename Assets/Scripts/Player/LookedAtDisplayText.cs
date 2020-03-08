@@ -4,6 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Behavior for display text about interactive text
 /// </summary>
+[RequireComponent(typeof(TMPro.TextMeshProUGUI))]
 public class LookedAtDisplayText : MonoBehaviour
 {
     private IInteractable interactiveObjLookedAt;
