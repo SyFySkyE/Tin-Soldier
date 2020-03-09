@@ -30,6 +30,7 @@ public class PlayerInteractWithInteractable : MonoBehaviour
         }   
     }
 
+
     private void OnLookedAtInteractableChange(IInteractable newObjLookedAt)
     {
         lookedAtInteractable = newObjLookedAt;
