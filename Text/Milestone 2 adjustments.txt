@@ -1,9 +1,4 @@
-- Make the floor nonreflective
-- Use different color, scale lights to indirectly control them.
+
 - Decorate insides with more complex patterns
-- tribic culturs usually arrange themselves in a totem-esque or central meeting area
-	- Change tree in middle to be "mother gaia tree"
-	- Maybe emphasize the role of nature and gaia into culture
 - Change Iinteractive to be strategy. Have a strategy for readable, ammo, etc.
-- Try making a IObserver and used that instead of System.Action. Ie, inheritt that on fp controller and camera will pick up on sprint for fov change
-- FP Interact Dot is hard to see against bright backgrounds. Maybe increase the stroke size?
+- Check that Dr. Fisher email about cultural items
