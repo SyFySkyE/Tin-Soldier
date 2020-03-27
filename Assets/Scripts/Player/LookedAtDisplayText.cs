@@ -14,11 +14,18 @@ public class LookedAtDisplayText : MonoBehaviour
     private void OnEnable()
     {
         PlayerCheckInteract.LookedAtInteractableChanged += OnLookedAtInteractableChange;
+        InteractiveObject.OnLookedAtStateChange += InteractiveObject_OnLookedAtStateChange;
+    }
+
+    private void InteractiveObject_OnLookedAtStateChange()
+    {
+        UpdateDisplayText();
     }
 
     private void OnDisable()
     {
         PlayerCheckInteract.LookedAtInteractableChanged -= OnLookedAtInteractableChange;
+        InteractiveObject.OnLookedAtStateChange -= InteractiveObject_OnLookedAtStateChange;
     }
     #endregion
 

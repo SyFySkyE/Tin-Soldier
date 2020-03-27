@@ -7,17 +7,30 @@ public class InteractiveObject : MonoBehaviour, IInteractable
 {
     [Header("What UI Text will display when camera hovers over this object")]
     [SerializeField] protected string displayText = nameof(InteractiveObject);
+    [Header("Check this if player can retoggle object")]
+    [SerializeField] protected bool isReuseable;
+    protected bool hasBeenUsed = false;
     public string DisplayText => this.displayText;
     private AudioSource objAudioSource;
 
-    private void Awake()
+    public static event System.Action OnLookedAtStateChange;
+
+    protected virtual void Awake()
     {
         objAudioSource = GetComponent<AudioSource>();
     }
 
     public virtual void Interact()
-    {
-        Debug.Log("Player interacted with " + this.name);
-        objAudioSource.Play();
+    {        
+        if (isReuseable || !hasBeenUsed)
+        {
+            objAudioSource.Play();
+            hasBeenUsed = true;
+            if (!this.isReuseable)
+            {                
+                displayText = string.Empty;
+                OnLookedAtStateChange?.Invoke(); // If the object changes state, look at new display text
+            }
+        }
     }
 }

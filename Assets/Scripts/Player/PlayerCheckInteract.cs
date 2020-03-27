@@ -35,7 +35,7 @@ public class PlayerCheckInteract : MonoBehaviour
 
     private IInteractable interactiveObjInSight;
 
-    private int currentObjInSightHashCode;
+    private int currentObjInSightHashCode;    
 
     // Start is called before the first frame update
     void Start()
