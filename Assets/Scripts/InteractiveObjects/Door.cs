@@ -13,6 +13,7 @@ public class Door : InteractiveObject
     [SerializeField] private PlayerUnityTrigger closeTrigger;
 
     private Animator doorAnim;
+    private AudioSource doorAudioSource;
     private int doorOpenAnimParameter = Animator.StringToHash("DoorOpen");
 
     public Door()
@@ -24,9 +25,10 @@ public class Door : InteractiveObject
     {
         base.Awake();
         doorAnim = GetComponent<Animator>();
+        doorAudioSource = GetComponent<AudioSource>();
         if (closeTrigger != null)
         {
-            closeTrigger.OnTrigger += CloseTrigger_OnTrigger;
+            closeTrigger.OnTrigger += CloseTrigger_OnTrigger;                        
         }
     }
 
@@ -35,6 +37,7 @@ public class Door : InteractiveObject
         if (doorAnim.GetBool(doorOpenAnimParameter))
         {
             doorAnim.SetBool(doorOpenAnimParameter, false);
+            doorAudioSource.PlayOneShot(doorCloseSfx);
         }
     }
 

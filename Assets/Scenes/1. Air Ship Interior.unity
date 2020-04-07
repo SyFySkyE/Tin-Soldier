@@ -3190,7 +3190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-18296
+  m_Name: pb_Mesh59686
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3430,7 +3430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayText: Open
   isReuseable: 1
-  doorCloseSfx: {fileID: 0}
+  doorCloseSfx: {fileID: 8300000, guid: df356c4711da8ce459cfbc0ce845b0f7, type: 3}
   closeTrigger: {fileID: 1470633404}
 --- !u!82 &576848455
 AudioSource:
@@ -3442,7 +3442,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d534fa61f85def04e923c0fd69a954b4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a01de67b83a3d95438857cab4b79103e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.596
   m_Pitch: 1
@@ -4287,7 +4287,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-15796
+  m_Name: pb_Mesh59574
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10540,6 +10540,43 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1696871034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 127724794499093397, guid: 29bc963fe621c6e4799593a47483e419,
+    type: 3}
+  m_PrefabInstance: {fileID: 127724795226761205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1696871039
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696871034}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 855a68355b46f524ba2b357b39297c0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1696871040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696871034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6a3129eec1c8a40a12a39626744f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1712105453
 Mesh:
   m_ObjectHideFlags: 0
@@ -12812,6 +12849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 127724795938315504, guid: 29bc963fe621c6e4799593a47483e419,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29bc963fe621c6e4799593a47483e419, type: 3}
