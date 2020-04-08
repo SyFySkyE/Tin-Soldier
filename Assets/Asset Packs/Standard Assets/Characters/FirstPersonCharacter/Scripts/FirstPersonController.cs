@@ -46,6 +46,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public event Action<bool> OnSprint;
 
+        float startingXSensitivity;
+        float startingYSensitivity;
+
         // Use this for initialization
         private void Start()
         {
@@ -59,6 +62,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+            startingXSensitivity = m_MouseLook.XSensitivity;
+            startingYSensitivity = m_MouseLook.YSensitivity;
+            PauseController.OnPause += PauseController_OnPause;
+        }
+
+        private void PauseController_OnPause(bool obj)
+        {
+            switch (obj)
+            {
+                case true:
+                    m_MouseLook.XSensitivity = 0;
+                    m_MouseLook.YSensitivity = 0;
+                    break;
+                case false:
+                    m_MouseLook.XSensitivity = startingXSensitivity;
+                    m_MouseLook.YSensitivity = startingYSensitivity;
+                    break;
+            }
         }
 
 
