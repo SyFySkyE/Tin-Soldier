@@ -14,6 +14,8 @@ public class ReadInteractive : InteractiveObject, IReadable
 
     public event System.Action<Sprite> OnImageRead;
 
+    private bool isReading = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,8 +23,16 @@ public class ReadInteractive : InteractiveObject, IReadable
 
     public override void Interact()
     {
-        Read();        
-        base.Interact();
+        if (!isReading)
+        {
+            Read();
+            base.Interact();
+            isReading = true;
+        }
+        else
+        {
+            isReading = false;
+        }
     }
 
     public void Read()

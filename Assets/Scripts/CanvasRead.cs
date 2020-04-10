@@ -37,14 +37,14 @@ public class CanvasRead : MonoBehaviour
     void Update()
     {
         if (isReading)
-        {
+        {            
             if (Input.GetButtonDown("Cancel"))
             {
                 this.sprite.enabled = false;
                 articleImageToFill.gameObject.SetActive(false);
                 isReading = false;
             }
-            else if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Interact")) // TODO When player tries to press Interact again, since the player is usually looking at the object, they end up reading it again
+            else if (Input.GetButtonDown("Fire1")) // TODO When player tries to press Interact again, since the player is usually looking at the object, they end up reading it again
             {
                 PauseController.Pause();
                 this.sprite.enabled = false;
