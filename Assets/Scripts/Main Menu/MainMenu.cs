@@ -1,23 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName;
+    private GameSceneManager sceneManagement;
+    private Animator menuAnimator;
+    [Header("SFX to play on each button click")]
+    [SerializeField] private AudioClip sfxClick;
+    [SerializeField] private float sfxVolume = 0.7f;
+    private AudioSource menuAudioSource;
 
-    public void LoadScene()
+    private void Start()
     {
-        SceneManager.LoadScene(gameSceneName);
+        menuAudioSource = GetComponent<AudioSource>();
+        sceneManagement = FindObjectOfType<GameSceneManager>();
+        menuAnimator = GetComponent<Animator>();
     }
 
-    public void QuitGame()
+    private void PlayButtonSfx()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit(0); // TODO spice up?
-#endif
+        menuAudioSource.PlayOneShot(sfxClick, sfxVolume); 
+    }
+
+    public void OnCreditsPressed()
+    {
+        PlayButtonSfx();
+        menuAnimator.SetBool("Credits", true);
+    }
+
+    public void OnCreditsBack()
+    {
+        PlayButtonSfx();
+        menuAnimator.SetBool("Credits", false);
+    }
+
+    public void OnPlayPress()
+    {
+        PlayButtonSfx();
+        menuAnimator.SetTrigger("Play");
+    }
+
+    public void OnQuitPressed()
+    {
+        PlayButtonSfx();
+        menuAnimator.SetTrigger("Quit");
+    }
+
+    public void Quit() // Activated via animation event
+    {
+        sceneManagement.Quit();
+    }
+
+    public void StartGame() // Activated via animation event
+    {
+        sceneManagement.LoadNextScene();
     }
 }
