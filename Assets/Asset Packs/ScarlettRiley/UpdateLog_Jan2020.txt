@@ -1,0 +1,4 @@
+Updates - January 2020
+
+* Scale updated to be more in line with standard Unity assets
+* Minor texture updates

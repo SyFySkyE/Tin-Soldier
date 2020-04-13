@@ -11,7 +11,7 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     [SerializeField] protected bool isReuseable;
     protected bool hasBeenUsed = false;
     public string DisplayText => this.displayText;
-    private AudioSource objAudioSource;
+    protected AudioSource objAudioSource;
 
     public static event System.Action OnLookedAtStateChange;
 
@@ -28,9 +28,14 @@ public class InteractiveObject : MonoBehaviour, IInteractable
             hasBeenUsed = true;
             if (!this.isReuseable)
             {                
-                displayText = string.Empty;
+                displayText = string.Empty;                
                 OnLookedAtStateChange?.Invoke(); // If the object changes state, look at new display text
             }
         }
+    }
+
+    protected void StateChange()
+    {
+        OnLookedAtStateChange?.Invoke();
     }
 }
