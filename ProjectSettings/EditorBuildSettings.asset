@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: ca870b77ba3f6384f8f78d44421facb2
+  - enabled: 1
     path: Assets/Scenes/1. Air Ship Interior.unity
     guid: 5f11ffd6d4a08154781c3f528402073a
   - enabled: 1

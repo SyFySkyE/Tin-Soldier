@@ -1,0 +1,4 @@
+
+- Decorate insides with more complex patterns
+- Change Iinteractive to be strategy. Have a strategy for readable, ammo, etc.
+- Check that Dr. Fisher email about cultural items
