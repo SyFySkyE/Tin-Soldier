@@ -10,7 +10,7 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     [Header("Check this if player can retoggle object")]
     [SerializeField] protected bool isReuseable;
     protected bool hasBeenUsed = false;
-    public string DisplayText => this.displayText;
+    public virtual string DisplayText => this.displayText;
     protected AudioSource objAudioSource;
 
     public static event System.Action OnLookedAtStateChange;

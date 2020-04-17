@@ -27,13 +27,13 @@ public class FGC_addItem : MonoBehaviour {
 			AddNewItem(addItem3);
 		}
 		else {
-			Debug.Log("FGC_addItem Script. No Item3 found.");
+			//Debug.Log("FGC_addItem Script. No Item3 found.");
 		}
 		if (addItem4!=null) {
 			AddNewItem(addItem4);
 		}
 		else {
-			Debug.Log("FGC_addItem Script. No Item4 found.");
+			//Debug.Log("FGC_addItem Script. No Item4 found.");
 		}
 	}
 

@@ -5,12 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Door : InteractiveObject
 {
-    [Header("SFX for Door Closing")]
+    [Header("Locked Parameters")]
+    [SerializeField] private bool isLocked = false;
+    [SerializeField] private string lockedText = "ERROR! Keycard required.";
+    [Header("SFX for Door")]
+    [SerializeField] private AudioClip openDoorSfx;
     [SerializeField] private AudioClip doorCloseSfx;
-
+    [SerializeField] private AudioClip lockedDoorSfx;
     [Header("If door should close, what trigger should open it?")]
     [Tooltip("Leave empty to leave door open")]
     [SerializeField] private PlayerUnityTrigger closeTrigger;
+
+    public override string DisplayText => isLocked ? lockedText : base.DisplayText;
 
     private Animator doorAnim;
     private AudioSource doorAudioSource;
@@ -43,7 +49,15 @@ public class Door : InteractiveObject
 
     public override void Interact()
     {
+        if (!isLocked)
+        {            
+            doorAnim.SetBool(doorOpenAnimParameter, true);
+            objAudioSource.clip = openDoorSfx;            
+        }
+        else
+        {
+            objAudioSource.clip = lockedDoorSfx;            
+        }
         base.Interact();
-        doorAnim.SetBool(doorOpenAnimParameter, true);
     }
 }
