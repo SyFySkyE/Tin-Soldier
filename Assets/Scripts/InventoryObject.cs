@@ -12,8 +12,12 @@ public class InventoryObject : InteractiveObject
     private Renderer objRenderer;
     private Collider objCollider;
 
-    // TODO Add long description field
-    // TODO Add icon field
+    [Header("Inventory UI parameters")]
+    [TextArea(4, 8)]
+    [Tooltip("Text that will diplay when this object is viewed in inventory")]
+    [SerializeField] private string description;
+    [Tooltip("Image that will represent item in inventory")]
+    [SerializeField] private Sprite icon;    
 
     /// <summary>
     /// Add inv object ot PlayerInventory

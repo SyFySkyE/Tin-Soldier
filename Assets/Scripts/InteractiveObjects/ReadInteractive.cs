@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum ShipInteriorReadImage { PhiIncident, PhiUpgrade, CyrrConquerring }
 
-public class ReadInteractive : InteractiveObject, IReadable
+public class ReadInteractive : InventoryObject, IReadable
 {
     [Header("Read Canvas Object")]
     [SerializeField] private GameObject readCanvasObj;

@@ -1321,14 +1321,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8196469144327578131}
-  m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.7071066}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -245.5, y: 0, z: 197.625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8196469145915697778}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!1 &8196469144511266188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,9 +2240,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e04198271dc834ca7029024a552ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayText: Open
+  displayText: Open door
+  useText: Access Granted
   isReuseable: 1
+  lockedText: ERROR! Keycard required.
+  key: {fileID: 0}
+  itemConsumeText: Key removed...
+  openDoorSfx: {fileID: 8300000, guid: a01de67b83a3d95438857cab4b79103e, type: 3}
   doorCloseSfx: {fileID: 8300000, guid: df356c4711da8ce459cfbc0ce845b0f7, type: 3}
+  doorCloseSfxVolume: 1
+  lockedDoorSfx: {fileID: 8300000, guid: 04795d2de00f7f94c8471000a1163ae5, type: 3}
   closeTrigger: {fileID: 8196469144511266186}
 --- !u!82 &8196469145915697777
 AudioSource:
