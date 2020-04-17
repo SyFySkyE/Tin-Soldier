@@ -5,22 +5,39 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Door : InteractiveObject
 {
-    [Header("Locked Parameters")]
-    [SerializeField] private bool isLocked = false;
+    [Header("Locked Parameters")]    
     [SerializeField] private string lockedText = "ERROR! Keycard required.";
+    [Header("Assign inventory GO needed to unlock door")]
+    [Tooltip("Drag an inventory game object from the scene here. If the player has this object in their inventory, they can open this door")]
+    [SerializeField] private InventoryObject key;
+    [Header("Text to show when key is removed. Leave this blank to not remove key from inventory.")]
+    [SerializeField] private string itemConsumeText;
     [Header("SFX for Door")]
     [SerializeField] private AudioClip openDoorSfx;
     [SerializeField] private AudioClip doorCloseSfx;
+    [SerializeField] private float doorCloseSfxVolume = 1f;
     [SerializeField] private AudioClip lockedDoorSfx;
     [Header("If door should close, what trigger should open it?")]
     [Tooltip("Leave empty to leave door open")]
     [SerializeField] private PlayerUnityTrigger closeTrigger;
 
-    public override string DisplayText => isLocked ? lockedText : base.DisplayText;
+    public override string DisplayText
+    {
+        get
+        {
+            string textToReturn;
+            if (isLocked)
+                textToReturn = hasKey ? displayText : lockedText;
+            else
+                textToReturn = base.DisplayText;
+            return textToReturn;
+        }
+    }
 
     private Animator doorAnim;
-    private AudioSource doorAudioSource;
     private int doorOpenAnimParameter = Animator.StringToHash("DoorOpen");
+    private bool isLocked = false;
+    private bool hasKey => PlayerInventory.InventoryObjects.Contains(key);
 
     public Door()
     {
@@ -31,11 +48,17 @@ public class Door : InteractiveObject
     {
         base.Awake();
         doorAnim = GetComponent<Animator>();
-        doorAudioSource = GetComponent<AudioSource>();
         if (closeTrigger != null)
         {
-            closeTrigger.OnTrigger += CloseTrigger_OnTrigger;                        
+            closeTrigger.OnTrigger += CloseTrigger_OnTrigger;
         }
+        InitializeIsLocked();
+    }
+
+    private void InitializeIsLocked()
+    {
+        if (key != null) isLocked = true;
+        else isLocked = false;
     }
 
     private void CloseTrigger_OnTrigger()
@@ -43,21 +66,32 @@ public class Door : InteractiveObject
         if (doorAnim.GetBool(doorOpenAnimParameter))
         {
             doorAnim.SetBool(doorOpenAnimParameter, false);
-            doorAudioSource.PlayOneShot(doorCloseSfx);
+            objAudioSource.PlayOneShot(doorCloseSfx, doorCloseSfxVolume);
         }
     }
 
     public override void Interact()
     {
-        if (!isLocked)
-        {            
-            doorAnim.SetBool(doorOpenAnimParameter, true);
-            objAudioSource.clip = openDoorSfx;            
+        if (!isLocked || hasKey)
+        {
+            OpenDoor();
         }
         else
         {
+            this.useText = string.Empty;
             objAudioSource.clip = lockedDoorSfx;            
         }
         base.Interact();
+    }
+
+    private void OpenDoor()
+    {
+        doorAnim.SetBool(doorOpenAnimParameter, true);
+        objAudioSource.clip = openDoorSfx;
+        if (key != null && itemConsumeText != string.Empty)
+        {
+            PlayerInventory.InventoryObjects.Remove(key);
+            this.useText = itemConsumeText;
+        }        
     }
 }
