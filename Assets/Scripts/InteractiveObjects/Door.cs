@@ -7,6 +7,7 @@ public class Door : InteractiveObject
 {
     [Header("Locked Parameters")]    
     [SerializeField] private string lockedText = "ERROR! Keycard required.";
+    [SerializeField] private string unlockText = "Access granted!";
     [Header("Assign inventory GO needed to unlock door")]
     [Tooltip("Drag an inventory game object from the scene here. If the player has this object in their inventory, they can open this door")]
     [SerializeField] private InventoryObject key;
@@ -20,6 +21,7 @@ public class Door : InteractiveObject
     [Header("If door should close, what trigger should open it?")]
     [Tooltip("Leave empty to leave door open")]
     [SerializeField] private PlayerUnityTrigger closeTrigger;
+    public static event System.Action<InventoryObject> OnKeyDestroy;
 
     public override string DisplayText
     {
@@ -86,12 +88,17 @@ public class Door : InteractiveObject
 
     private void OpenDoor()
     {
+        if (key != null)
+        {
+            this.useText = unlockText;
+        }
         doorAnim.SetBool(doorOpenAnimParameter, true);
         objAudioSource.clip = openDoorSfx;
-        if (key != null && itemConsumeText != string.Empty)
+        if (itemConsumeText != string.Empty)
         {
-            PlayerInventory.InventoryObjects.Remove(key);
             this.useText = itemConsumeText;
+            OnKeyDestroy?.Invoke(key);
+            PlayerInventory.InventoryObjects.Remove(key);            
         }        
     }
 }

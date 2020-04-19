@@ -5,7 +5,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PauseController : MonoBehaviour
 {
-    private FirstPersonController player;
     private static PauseController instance;
     public static PauseController Instance
     {
@@ -26,7 +25,7 @@ public class PauseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<FirstPersonController>();
+        
     }
 
     // Update is called once per frame
