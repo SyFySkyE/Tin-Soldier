@@ -8542,7 +8542,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859597193}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -8563,6 +8563,9 @@ MonoBehaviour:
   inventoryContentTransform: {fileID: 1360380062}
   itemNameText: {fileID: 683390757}
   descriptionText: {fileID: 353720913}
+  defaultObjectNameText: Viewfinder v2.1a
+  defaultObjectDescription: Collected objects will appear on the left. Select one
+    to examine closely.
 --- !u!95 &859597200
 Animator:
   serializedVersion: 3
