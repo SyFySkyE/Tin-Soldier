@@ -207,3 +207,5 @@ MonoBehaviour:
   isReuseable: 0
   objectText: Key Card
   willRemove: 1
+  description: Armory Key
+  icon: {fileID: 21300000, guid: de5bb1d5b04bcbf448141a5b0fb9dbc7, type: 3}

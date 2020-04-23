@@ -41,9 +41,12 @@ public class InventoryObject : InteractiveObject
 
     public override void Interact()
     {
-        base.Interact();
-        PlayerInventory.InventoryObjects.Add(this);
-        InventoryMenu.Instance.AddItemToMenu(this);
+        if (!this.hasBeenUsed)
+        {
+            PlayerInventory.InventoryObjects.Add(this);
+            InventoryMenu.Instance.AddItemToMenu(this);
+        }
+        base.Interact();        
         if (willRemove)
         {
             objRenderer.enabled = false;
