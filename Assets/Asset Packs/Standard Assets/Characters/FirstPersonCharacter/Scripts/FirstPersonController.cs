@@ -41,6 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
+        public bool IsJumping { get { return this.m_Jumping; } }
         private AudioSource m_AudioSource;
         private float camResetTime;
 
