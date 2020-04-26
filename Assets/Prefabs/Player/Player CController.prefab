@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 209438459}
   - component: {fileID: 209438461}
   - component: {fileID: 669745019}
+  - component: {fileID: 1475201235}
   m_Layer: 2
   m_Name: Player CController
   m_TagString: Player
@@ -88,6 +89,29 @@ MonoBehaviour:
   sprintFOV: 75
   sprintInLerpSpeed: 0.05
   sprintOutLerpSpeed: 0.1
+--- !u!114 &1475201235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993620891828102313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33845a54976c94b4298db1521f944bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightTimeSlider: {fileID: 0}
+  flightTime: 5
+  flightAccel: 3
+  maxFlightAccel: 10
+  flightAccelMultiplier: 1.5
+  flyUpFlightTimeDecrementMultiplier: 1.5
+  treadFightTimeDecrementMultiplier: 0.5
+  gravityLerpDecrementAmount: 0.1
+  flightTimeRechargeMultiplier: 1.2
+  valueBeforeFadeOut: 2.9
+  valueBeforeLow: 1.5
 --- !u!136 &1194021093
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -177,6 +201,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_IsWalking
       value: 1
@@ -229,6 +257,11 @@ PrefabInstance:
       propertyPath: m_StepInterval
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 415bae3ae5f7e4f4e924bfc79773f59c,
+        type: 2}
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Height
       value: 3.8

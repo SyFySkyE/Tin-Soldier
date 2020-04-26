@@ -34,6 +34,10 @@ public class PlayerFlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!flightTimeSlider.gameObject.activeSelf)
+        {
+            flightTimeSlider.gameObject.SetActive(true);
+        }
         isFloating = false;
         isFlying = false;
         currentFlightAccel = flightAccel;
