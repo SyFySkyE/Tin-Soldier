@@ -68,7 +68,7 @@ public class PlayerFlight : MonoBehaviour
         {
             if (currentFlightTime > 0)
             {
-                sliderAnim.SetTrigger("OnFadeIn");
+                sliderAnim.SetBool("OnFadeIn", true);
                 sliderAnim.SetBool("OnUse", true);
                 currentFlightTime -= flyUpFlightTimeDecrementMultiplier * Time.fixedDeltaTime;
                 playerCharController.Move(Vector3.up * currentFlightAccel * Time.deltaTime);
@@ -78,6 +78,7 @@ public class PlayerFlight : MonoBehaviour
         }
         else
         {
+            sliderAnim.SetBool("OnFadeIn", false);
             sliderAnim.SetBool("OnUse", false);
             if (currentFlightTime < flightTime)
             {
@@ -93,7 +94,11 @@ public class PlayerFlight : MonoBehaviour
         flightTimeSlider.value = currentFlightTime;
         if (flightTimeSlider.value >= flightTimeSlider.maxValue)
         {
-            sliderAnim.SetTrigger("OnFadeOut");
+            sliderAnim.SetBool("OnFadeOut", true);
+        }
+        else
+        {
+            sliderAnim.SetBool("OnFadeOut", false);
         }
         if (flightTimeSlider.value <= valueBeforeLow) 
         {

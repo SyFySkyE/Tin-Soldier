@@ -2437,7 +2437,7 @@ MonoBehaviour:
   gravityLerpDecrementAmount: 0.1
   flightTimeRechargeMultiplier: 1.2
   valueBeforeFadeOut: 2.9
-  valueBeforeLow: 0.5
+  valueBeforeLow: 1.5
 --- !u!1 &1506870541
 GameObject:
   m_ObjectHideFlags: 0
