@@ -371,7 +371,7 @@ PrefabInstance:
     - target: {fileID: 993620891828102311, guid: 5658fa9005894e4429272794a7151654,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 993620891828102311, guid: 5658fa9005894e4429272794a7151654,
         type: 3}
@@ -472,14 +472,13 @@ GameObject:
   - component: {fileID: 175466318}
   - component: {fileID: 175466317}
   - component: {fileID: 175466316}
-  - component: {fileID: 175466315}
   m_Layer: 5
   m_Name: Initializing Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &175466314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -499,18 +498,6 @@ RectTransform:
   m_AnchoredPosition: {x: 26.5, y: 36.5}
   m_SizeDelta: {x: 441.7, y: 56.1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &175466315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175466313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c84618cc71f18649b13b77c1cbd5744, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &175466316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +540,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 12829635
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1205,18 +1192,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1475201235}
-        m_MethodName: SliderAnimation
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!95 &558564970
 Animator:
   serializedVersion: 3
@@ -1903,98 +1879,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e835ddacd94d3bd469949f0037d0ce53, type: 3}
---- !u!1 &954116221
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 954116225}
-  - component: {fileID: 954116224}
-  - component: {fileID: 954116223}
-  - component: {fileID: 954116222}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &954116222
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954116221}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &954116223
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954116221}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &954116224
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954116221}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &954116225
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954116221}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1002.7259, y: 464.7752, z: -138.15562}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1047827080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,14 +2428,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flightTimeSlider: {fileID: 558564969}
-  flightTime: 3
+  flightTime: 5
   flightAccel: 3
   maxFlightAccel: 10
   flightAccelMultiplier: 1.5
   flyUpFlightTimeDecrementMultiplier: 1.5
   treadFightTimeDecrementMultiplier: 0.5
   gravityLerpDecrementAmount: 0.1
-  flightTimeRechargeMultiplier: 0.7
+  flightTimeRechargeMultiplier: 1.2
+  valueBeforeFadeOut: 2.9
+  valueBeforeLow: 0.5
 --- !u!1 &1506870541
 GameObject:
   m_ObjectHideFlags: 0

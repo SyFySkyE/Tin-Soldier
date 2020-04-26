@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerFlight : MonoBehaviour
@@ -17,8 +18,13 @@ public class PlayerFlight : MonoBehaviour
     [SerializeField] private float gravityLerpDecrementAmount = 0.1f;
     [SerializeField] private float flightTimeRechargeMultiplier = 0.7f;
 
-    private FirstPersonController playerController;
+    [Header("Slider Anim Parameters")]
+    [SerializeField] private float valueBeforeFadeOut = 2.9f;
+    [SerializeField] private float valueBeforeLow = 1f;
+
+    private FirstPersonController playerFPController;
     private CharacterController playerCharController;
+    private Animator sliderAnim;
 
     private bool isFlying;
     private bool isFloating;
@@ -32,8 +38,9 @@ public class PlayerFlight : MonoBehaviour
         isFlying = false;
         currentFlightAccel = flightAccel;
         currentFlightTime = flightTime;
-        playerController = GetComponentInChildren<FirstPersonController>();
-        playerCharController = playerController.GetComponent<CharacterController>();
+        sliderAnim = flightTimeSlider.GetComponent<Animator>();
+        playerFPController = GetComponentInChildren<FirstPersonController>();
+        playerCharController = playerFPController.GetComponent<CharacterController>();
         flightTimeSlider.maxValue = flightTime;
     }   
 
@@ -61,19 +68,22 @@ public class PlayerFlight : MonoBehaviour
         {
             if (currentFlightTime > 0)
             {
+                sliderAnim.SetTrigger("OnFadeIn");
+                sliderAnim.SetBool("OnUse", true);
                 currentFlightTime -= flyUpFlightTimeDecrementMultiplier * Time.fixedDeltaTime;
                 playerCharController.Move(Vector3.up * currentFlightAccel * Time.deltaTime);
                 currentFlightAccel = Mathf.Lerp(currentFlightAccel, maxFlightAccel, flightAccelMultiplier * Time.deltaTime);
-                playerController.DecreaseGravity(gravityLerpDecrementAmount);
+                playerFPController.DecreaseGravity(gravityLerpDecrementAmount);
             }            
         }
         else
         {
+            sliderAnim.SetBool("OnUse", false);
             if (currentFlightTime < flightTime)
             {
                 currentFlightTime += Time.fixedDeltaTime * flightTimeRechargeMultiplier;
             }            
-            playerController.ResetGravity();
+            playerFPController.ResetGravity();
             currentFlightAccel = flightAccel;
         }
     }
@@ -81,22 +91,29 @@ public class PlayerFlight : MonoBehaviour
     private void LateUpdate()
     {
         flightTimeSlider.value = currentFlightTime;
+        if (flightTimeSlider.value >= flightTimeSlider.maxValue)
+        {
+            sliderAnim.SetTrigger("OnFadeOut");
+        }
+        if (flightTimeSlider.value <= valueBeforeLow) 
+        {
+            sliderAnim.SetBool("OnLow", true);
+        }
+        else
+        {
+            sliderAnim.SetBool("OnLow", false);
+        }
     }
 
     private void CheckForFlying()
     {
-        if (Input.GetButtonDown("Jump") && playerController.IsJumping && currentFlightTime != 0)
+        if (Input.GetButtonDown("Jump") && playerFPController.IsJumping && currentFlightTime != 0)
         {
             isFlying = true;
         }
-        else if (!playerController.IsJumping || currentFlightTime <= 0)
+        else if (!playerFPController.IsJumping || currentFlightTime <= 0)
         {
             isFlying = false;
         }
-    }
-
-    public void SliderAnimation(float value)
-    {
-        Debug.Log(value);
     }
 }
