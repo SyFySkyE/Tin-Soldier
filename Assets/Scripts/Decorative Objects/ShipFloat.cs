@@ -20,7 +20,7 @@ public class ShipFloat : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shipAnim.enabled = false;
+            this.shipAnim.enabled = false;
         }
     }
 
@@ -28,7 +28,7 @@ public class ShipFloat : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            shipAnim.enabled = true;
+            this.shipAnim.enabled = true;
         }
     }
 }

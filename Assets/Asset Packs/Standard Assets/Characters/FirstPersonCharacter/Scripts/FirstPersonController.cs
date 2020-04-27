@@ -68,6 +68,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             startingXSensitivity = m_MouseLook.XSensitivity;
             startingYSensitivity = m_MouseLook.YSensitivity;
             PauseController.OnPause += PauseController_OnPause;
+            LevelTransition.OnLevelEnd += LevelTransition_OnLevelEnd;
+        }
+
+        private void LevelTransition_OnLevelEnd()
+        {
+            m_GravityMultiplier = 0;
+            this.enabled = false;
         }
 
         private void PauseController_OnPause(bool obj)

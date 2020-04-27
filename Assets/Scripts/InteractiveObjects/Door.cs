@@ -76,10 +76,13 @@ public class Door : InteractiveObject
     {
         if (!isLocked || hasKey)
         {
-            OpenDoor();
+            if (!this.hasBeenUsed || this.isReuseable)
+            {
+                OpenDoor();                
+            }            
         }
         else
-        {
+        {            
             this.useText = string.Empty;
             objAudioSource.clip = lockedDoorSfx;            
         }

@@ -2243,9 +2243,10 @@ MonoBehaviour:
   displayText: Open door
   useText: Access Granted
   isReuseable: 1
-  lockedText: ERROR! Keycard required.
+  lockedText: 
+  unlockText: Access granted!
   key: {fileID: 0}
-  itemConsumeText: Key removed...
+  itemConsumeText: 
   openDoorSfx: {fileID: 8300000, guid: a01de67b83a3d95438857cab4b79103e, type: 3}
   doorCloseSfx: {fileID: 8300000, guid: df356c4711da8ce459cfbc0ce845b0f7, type: 3}
   doorCloseSfxVolume: 1
