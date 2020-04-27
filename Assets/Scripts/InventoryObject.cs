@@ -6,14 +6,21 @@ public class InventoryObject : InteractiveObject
 {
     [Header("The object name that will appear in the inventory menu UI")]
     [SerializeField] protected string objectText = nameof(InventoryObject);
+    public string ObjectText => this.objectText;
     [Header("Whether this item will disable when interaction")]
     [SerializeField] private bool willRemove;
 
     private Renderer objRenderer;
     private Collider objCollider;
 
-    // TODO Add long description field
-    // TODO Add icon field
+    [Header("Inventory UI parameters")]
+    [TextArea(4, 8)]
+    [Tooltip("Text that will diplay when this object is viewed in inventory")]
+    [SerializeField] private string description;
+    public string Description => this.description;
+    [Tooltip("Image that will represent item in inventory")]
+    [SerializeField] private Sprite icon;
+    public Sprite Icon => this.icon;
 
     /// <summary>
     /// Add inv object ot PlayerInventory
@@ -34,8 +41,12 @@ public class InventoryObject : InteractiveObject
 
     public override void Interact()
     {
-        base.Interact();
-        PlayerInventory.InventoryObjects.Add(this);
+        if (!this.hasBeenUsed)
+        {
+            PlayerInventory.InventoryObjects.Add(this);
+            InventoryMenu.Instance.AddItemToMenu(this);
+        }
+        base.Interact();        
         if (willRemove)
         {
             objRenderer.enabled = false;

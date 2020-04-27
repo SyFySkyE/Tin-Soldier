@@ -15,4 +15,20 @@ public class ShipFloat : MonoBehaviour
         shipAnim = GetComponent<Animator>();
         shipAnim.SetFloat("ShipSpeed", Random.Range(minSpeedMultiplier, maxSpeedMultiplier));
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            this.shipAnim.enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            this.shipAnim.enabled = true;
+        }
+    }
 }

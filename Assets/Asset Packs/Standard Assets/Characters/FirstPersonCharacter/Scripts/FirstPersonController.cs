@@ -41,8 +41,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_StepCycle;
         private float m_NextStep;
         private bool m_Jumping;
+        public bool IsJumping { get { return this.m_Jumping; } }
         private AudioSource m_AudioSource;
         private float camResetTime;
+        private float initialGravityModifier;
 
         public event Action<bool> OnSprint;
 
@@ -52,6 +54,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Use this for initialization
         private void Start()
         {
+            initialGravityModifier = m_GravityMultiplier;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -65,6 +68,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             startingXSensitivity = m_MouseLook.XSensitivity;
             startingYSensitivity = m_MouseLook.YSensitivity;
             PauseController.OnPause += PauseController_OnPause;
+            LevelTransition.OnLevelEnd += LevelTransition_OnLevelEnd;
+        }
+
+        private void LevelTransition_OnLevelEnd()
+        {
+            m_GravityMultiplier = 0;
+            this.enabled = false;
         }
 
         private void PauseController_OnPause(bool obj)
@@ -179,6 +189,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
 
+            
+
             if (m_CharacterController.isGrounded)
             {
                 m_MoveDir.y = -m_StickToGroundForce;
@@ -192,8 +204,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
             }
             else
-            {
-                m_MoveDir += Physics.gravity*m_GravityMultiplier*Time.fixedDeltaTime;
+            {                
+                m_MoveDir += Physics.gravity* m_GravityMultiplier * Time.fixedDeltaTime;
             }
             m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
 
@@ -203,6 +215,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MouseLook.UpdateCursorLock();
         }
 
+        public void DecreaseGravity(float lerpAmount)
+        {
+            this.m_GravityMultiplier = Mathf.Lerp(m_GravityMultiplier, 0, lerpAmount);
+            m_MoveDir.y = Mathf.Lerp(m_MoveDir.y, 0, lerpAmount);
+        }
+
+        public void ResetGravity()
+        {
+            this.m_GravityMultiplier = initialGravityModifier;
+        }
 
         private void PlayJumpSound()
         {
