@@ -16,4 +16,13 @@ public class CutscenePlay : MonoBehaviour
     {
         cutscene.Play();
     }
+
+    public void EndGame()
+    {
+#if UNITY_EDITOR        
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(0);
+#endif
+    }
 }

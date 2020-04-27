@@ -77,6 +77,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             this.enabled = false;
         }
 
+        private void OnDisable()
+        {
+            LevelTransition.OnLevelEnd -= LevelTransition_OnLevelEnd;
+        }
+
         private void PauseController_OnPause(bool obj)
         {
             switch (obj)

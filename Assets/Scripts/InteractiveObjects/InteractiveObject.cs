@@ -17,9 +17,12 @@ public class InteractiveObject : MonoBehaviour, IInteractable
 
     public static event System.Action OnLookedAtStateChange;
     public static event System.Action<string> OnUseText;
+    private Vector3 spawnPos;
+    private float yTriggerRespawn = -100f; // At what y to trigger respawn
 
     protected virtual void Awake()
     {
+        spawnPos = transform.position; // Where to respawn if falls off map
         objAudioSource = GetComponent<AudioSource>();
     }
 
@@ -35,6 +38,14 @@ public class InteractiveObject : MonoBehaviour, IInteractable
                 displayText = string.Empty;                
                 OnLookedAtStateChange?.Invoke(); // If the object changes state, look at new display text                
             }
+        }
+    }
+
+    protected virtual void Update()
+    {
+        if (this.transform.position.y <= yTriggerRespawn)
+        {
+            this.transform.position = this.spawnPos;
         }
     }
 

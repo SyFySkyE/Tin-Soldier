@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 298952616}
   - component: {fileID: 298952615}
   - component: {fileID: 298952614}
+  - component: {fileID: 298952617}
   m_Layer: 0
   m_Name: Narrative
   m_TagString: Untagged
@@ -253,6 +254,8 @@ PlayableDirector:
     value: {fileID: 515634589}
   - key: {fileID: 328081333726140552, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
     value: {fileID: 515634593}
+  - key: {fileID: -2264116476920012419, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
+    value: {fileID: 298952613}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &298952615
@@ -284,6 +287,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298952617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298952613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 3bfcdf10ffc631940abf71dbd2ccecd6, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 298952615}
+          m_MethodName: EndGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &515634589
 GameObject:
   m_ObjectHideFlags: 0
@@ -6045,6 +6077,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1475201235, guid: 5658fa9005894e4429272794a7151654, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2036436163, guid: 5658fa9005894e4429272794a7151654, type: 3}
       propertyPath: m_IsActive
       value: 1

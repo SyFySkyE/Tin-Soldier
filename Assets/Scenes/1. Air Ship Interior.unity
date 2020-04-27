@@ -21351,6 +21351,14 @@ PrefabInstance:
       propertyPath: readCanvasObj
       value: 
       objectReference: {fileID: 117355842}
+    - target: {fileID: 1757793219, guid: b1ae903b8a721f04db32c522ac2219fa, type: 3}
+      propertyPath: useText
+      value: Press Tab or I to view inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757793219, guid: b1ae903b8a721f04db32c522ac2219fa, type: 3}
+      propertyPath: displayText
+      value: Press E to read
+      objectReference: {fileID: 0}
     - target: {fileID: 1918923502, guid: b1ae903b8a721f04db32c522ac2219fa, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -27205,5 +27213,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 984340774}
+    - target: {fileID: 8196469145915697776, guid: 40fedecf12307244f8e22f8d0a39f18e,
+        type: 3}
+      propertyPath: displayText
+      value: Press E to interact
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40fedecf12307244f8e22f8d0a39f18e, type: 3}

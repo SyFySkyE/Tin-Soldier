@@ -13,10 +13,10 @@ public class GameCanvasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvasAnim = GetComponent<Animator>();
         LevelTransition.OnLevelEnd += LevelTransition_OnLevelEnd;
         player = FindObjectOfType<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
         player.OnSprint += Player_OnSprint;
-        canvasAnim = GetComponent<Animator>();
         InteractiveObject.OnUseText += InteractiveObject_OnUseText;
         canvasAnim.SetTrigger("Start");
     }
@@ -35,5 +35,11 @@ public class GameCanvasController : MonoBehaviour
     private void Player_OnSprint(bool isSprinting)
     {
         canvasAnim.SetBool(canvasDotSprintAnim, isSprinting);
+    }
+
+    private void OnDisable()
+    {
+        LevelTransition.OnLevelEnd -= LevelTransition_OnLevelEnd;
+        InteractiveObject.OnUseText -= InteractiveObject_OnUseText;
     }
 }
