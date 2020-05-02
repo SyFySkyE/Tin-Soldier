@@ -7,6 +7,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class PlayerFlight : MonoBehaviour
 {
     [SerializeField] private UnityEngine.UI.Slider flightTimeSlider; // TODO Should this be taken care of by another class? That can take care of it dissppearing and whatnot when not in use
+    [Header("Particles that are active while player is flying")]
+    [SerializeField] private ParticleSystem jetpackParticles;
 
     [Header("Flight parameters")]
     [SerializeField] private float flightTime = 2f;
@@ -25,6 +27,7 @@ public class PlayerFlight : MonoBehaviour
     private FirstPersonController playerFPController;
     private CharacterController playerCharController;
     private Animator sliderAnim;
+    private AudioSource jetpackAudio;
 
     private bool isFlying;
     private bool isFloating;
@@ -34,6 +37,8 @@ public class PlayerFlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        jetpackAudio = GetComponent<AudioSource>();
+        jetpackParticles.Stop();
         if (!flightTimeSlider.gameObject.activeSelf)
         {
             flightTimeSlider.gameObject.SetActive(true);
@@ -72,6 +77,9 @@ public class PlayerFlight : MonoBehaviour
         {
             if (currentFlightTime > 0)
             {
+                if (!jetpackAudio.isPlaying)
+                    jetpackAudio.Play(); // Check if playing?
+                jetpackParticles.Play();
                 sliderAnim.SetBool("OnFadeIn", true);
                 sliderAnim.SetBool("OnUse", true);
                 currentFlightTime -= flyUpFlightTimeDecrementMultiplier * Time.fixedDeltaTime;
@@ -82,6 +90,8 @@ public class PlayerFlight : MonoBehaviour
         }
         else
         {
+            jetpackAudio.Stop();
+            jetpackParticles.Stop();
             sliderAnim.SetBool("OnFadeIn", false);
             sliderAnim.SetBool("OnUse", false);
             if (currentFlightTime < flightTime)

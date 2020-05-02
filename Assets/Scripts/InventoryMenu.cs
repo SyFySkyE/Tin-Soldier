@@ -39,13 +39,13 @@ public class InventoryMenu : MonoBehaviour
     }
 
     private void Awake()
-    {        
+    {
+        DontDestroyOnLoad(this.gameObject);
         if (instance == null)
             instance = this;
         else
         {
-            this.enabled = false;
-            Debug.LogError($"More than one inventory menu is in the scene. Disabling: {this.gameObject.name}");
+            Destroy(this.gameObject);
         }
 
         canvasGroup = GetComponent<CanvasGroup>();        
@@ -70,6 +70,10 @@ public class InventoryMenu : MonoBehaviour
     {
         canvasInventoryAudioSource.Play();
         isMenuOpen = !isMenuOpen;
+        if (player == null)
+        {
+            player = FindObjectOfType<FirstPersonController>();
+        }
         player.enabled = !player.enabled;
         Cursor.visible = !Cursor.visible;
         this.descriptionText.text = defaultObjectDescription;
