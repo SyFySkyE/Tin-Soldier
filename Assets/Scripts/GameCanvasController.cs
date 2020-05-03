@@ -18,7 +18,13 @@ public class GameCanvasController : MonoBehaviour
         player = FindObjectOfType<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
         player.OnSprint += Player_OnSprint;
         InteractiveObject.OnUseText += InteractiveObject_OnUseText;
+        Weapon.OnWeaponSwitch += Weapon_OnWeaponSwitch;
         canvasAnim.SetTrigger("Start");
+    }
+
+    private void Weapon_OnWeaponSwitch(bool isGun)
+    {
+        canvasAnim.SetBool("OnWeaponEquip", isGun);
     }
 
     private void LevelTransition_OnLevelEnd()

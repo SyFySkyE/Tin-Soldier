@@ -1,44 +1,60 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public abstract class Weapon : InteractiveObject
 {
     [Header("Where the gun will be located and parented to")]
     [SerializeField] protected Transform playerHand;
 
+    [SerializeField] private AudioClip shootSfx;
+    [SerializeField] private float shootSfxVolume = 0.5f;
+
     [Header("Gun Parameters")]
     [SerializeField] protected int bulletsPerClip = 8;
     [SerializeField] protected int damage = 1;
 
+    protected bool isGun;
     private int bulletsLeft;
     protected Animator weaponAnim;
+    private ParticleSystem muzzleFlash;
+
+    public static event System.Action<bool> OnWeaponSwitch; // SO canvas knows which crosshairs to display
 
     protected override void Awake()
     {
+        muzzleFlash = GetComponentInChildren<ParticleSystem>();
+        isGun = true;
         bulletsLeft = bulletsPerClip;
         base.Awake();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        if (bulletsLeft <= 0)
+        if (bulletsLeft <= 0 && isGun)
         {
             Reload();
         }
+        OnWeaponSwitch?.Invoke(isGun);
     }
     
     public void OnPickUp()
     {
-        weaponAnim.SetTrigger("Pickup");
+        OnWeaponSwitch?.Invoke(isGun);
+        if (weaponAnim != null)
+        {
+            weaponAnim.SetTrigger("Pickup");
+        }        
     }
 
     public virtual void Shoot()
     {
         if (bulletsLeft > 0)
         {
-            Debug.Log("Bang");
-            //weaponAnim.SetTrigger("Shoot");
+            muzzleFlash.Play();
+            weaponAnim.SetTrigger("Shoot");
+            this.objAudioSource.PlayOneShot(shootSfx, shootSfxVolume);
             bulletsLeft--;
         }
         else

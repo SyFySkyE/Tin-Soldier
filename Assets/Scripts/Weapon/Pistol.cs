@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pistol : Weapon
 {
+    [SerializeField] private AudioClip reloadSfx;
+
     protected override void Awake()
     {
         this.weaponAnim = GetComponent<Animator>();

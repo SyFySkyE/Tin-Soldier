@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerWeapons : MonoBehaviour
 {
     [SerializeField] private List<Weapon> weapons;
+    [SerializeField] private Unarmed unarmedObj;
 
     private int weaponIndex;
+    private AudioSource playerWeaponSwitchAudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerWeaponSwitchAudioSource = GetComponent<AudioSource>();
         weaponIndex = 0;
         weapons = new List<Weapon>();
+        weapons.Add(Instantiate(unarmedObj, this.transform));        
     }
 
     // Update is called once per frame
@@ -29,22 +34,24 @@ public class PlayerWeapons : MonoBehaviour
                 DecrementWeaponIndex();
             }
             weapons[weaponIndex].OnPickUp();
-        }
-        
+        }        
 
-        if (Input.GetButtonDown("Fire1"))
+        if (weapons.Count > 0)
         {
-            weapons[weaponIndex].Shoot();
-        }
-        else if (Input.GetButtonDown("Reload"))
-        {
-            weapons[weaponIndex].Reload();
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
+                weapons[weaponIndex].Shoot();
+            }
+            else if (Input.GetButtonDown("Reload"))
+            {
+                weapons[weaponIndex].Reload();
+            }
+        }        
     }
 
     private void DecrementWeaponIndex()
     {
-        if (weapons.Count > 1) // Do we have more than one weapon?
+        if (weapons.Count > 1) // Do we have more than one weapon? Unarmed counts as a weapon
         {
             if (weaponIndex - 1 >= 0) // Will switch to a lower weapon as long as it's index 0 or above
             {
@@ -87,6 +94,7 @@ public class PlayerWeapons : MonoBehaviour
             oldWeapon.gameObject.SetActive(false);
         }
         weapons.Add(newWeapon);
+        weaponIndex = weapons.Count - 1; // Equip the weapon we just picked up
         newWeapon.OnPickUp();
     }
 }
