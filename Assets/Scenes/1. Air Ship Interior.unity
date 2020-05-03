@@ -20291,7 +20291,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player CController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 773737655, guid: 5658fa9005894e4429272794a7151654, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5658fa9005894e4429272794a7151654, type: 3}
 --- !u!1001 &1432497477993006559
 PrefabInstance:
@@ -20408,6 +20409,11 @@ PrefabInstance:
     - target: {fileID: 1432497478022708893, guid: 548206e78d3f17247ae6d558b6418290,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432497478276934737, guid: 548206e78d3f17247ae6d558b6418290,
+        type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1432497478276934738, guid: 548206e78d3f17247ae6d558b6418290,
