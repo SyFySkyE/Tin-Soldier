@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Runtime.CompilerServices;
 
 public enum Tutorials
 {
@@ -12,11 +11,13 @@ public enum Tutorials
     ExitInventory,
     Sprint,
     LockedDoor,
-    Jetpack
+    Jetpack,
+    Move
 }
 
 public class TutorialText : MonoBehaviour
 {
+    [SerializeField] private string moveText = "You can walk using WASD";
     [SerializeField] private string interactText = "You can interact with certain objects by targeting them and pressing \"E\"";
     [SerializeField] private string readText = "Press \"E\" again to stop reading";
     [SerializeField] private string inventoryText = "Access your internal inventory by pressing \"Tab\" or \"I\"";
@@ -77,6 +78,9 @@ public class TutorialText : MonoBehaviour
                 break;
             case Tutorials.LockedDoor:
                 tutorialText.text = lockedText;
+                break;
+            case Tutorials.Move:
+                tutorialText.text = moveText;
                 break;
         }
         textAnim.SetTrigger("Tutorial");
