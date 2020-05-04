@@ -11,8 +11,7 @@ public class ReadInteractive : InventoryObject, IReadable
     [SerializeField] private Sprite thisReadImage;
 
     public event System.Action<Sprite> OnImageRead;
-
-    private bool isReading = false;
+    public event System.Action OnCancelRead;
 
     protected override void Awake()
     {
@@ -21,16 +20,18 @@ public class ReadInteractive : InventoryObject, IReadable
 
     public override void Interact()
     {
-        if (!isReading)
+        if (PlayerCurrentState.currentPlayerState != PlayerState.Reading)
         {
+            PlayerCurrentState.currentPlayerState = PlayerState.Reading;
             Read();
-            base.Interact();
-            isReading = true;
+            base.Interact();            
         }
         else
         {
-            isReading = false;
+            PlayerCurrentState.currentPlayerState = PlayerState.None;
+            OnCancelRead?.Invoke();
         }
+        PauseController.Pause();
     }
 
     public void Read()

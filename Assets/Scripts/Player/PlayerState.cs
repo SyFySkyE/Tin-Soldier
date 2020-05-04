@@ -8,7 +8,7 @@ public enum PlayerState
     Reading
 }
 
-public class PlayerCurrentState : MonoBehaviour
+public static class PlayerCurrentState
 {
-    public PlayerState currentPlayerState { get; set; }
+    public static PlayerState currentPlayerState = PlayerState.None;
 }

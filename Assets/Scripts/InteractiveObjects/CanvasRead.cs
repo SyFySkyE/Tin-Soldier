@@ -10,7 +10,6 @@ public class CanvasRead : MonoBehaviour
     private ReadInteractive[] readableObjectsInScene;
 
     private UnityEngine.UI.Image sprite;
-    private bool isReading = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,36 +20,20 @@ public class CanvasRead : MonoBehaviour
         foreach (var item in readableObjectsInScene)
         {
             item.OnImageRead += Item_OnImageRead;
+            item.OnCancelRead += Item_OnCancelRead;
         }
+    }
+
+    private void Item_OnCancelRead()
+    {
+        this.sprite.enabled = false;
+        articleImageToFill.gameObject.SetActive(false);        
     }
 
     private void Item_OnImageRead(Sprite obj)
     {
         this.sprite.enabled = true;
         articleImageToFill.gameObject.SetActive(true);
-        articleImageToFill.sprite = obj;
-        isReading = true;
-        PauseController.Pause();
+        articleImageToFill.sprite = obj;        
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isReading)
-        {            
-            if (Input.GetButtonDown("Cancel"))
-            {
-                this.sprite.enabled = false;
-                articleImageToFill.gameObject.SetActive(false);
-                isReading = false;
-            }
-            else if (Input.GetButtonDown("Fire1")) // TODO When player tries to press Interact again, since the player is usually looking at the object, they end up reading it again
-            {
-                PauseController.Pause();
-                this.sprite.enabled = false;
-                articleImageToFill.gameObject.SetActive(false);                
-                isReading = false;
-            }
-        }
-    }    
 }

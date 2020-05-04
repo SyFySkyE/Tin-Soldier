@@ -22,21 +22,6 @@ public class PauseController : MonoBehaviour
 
     public static event System.Action<bool> OnPause;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            Pause();
-        }
-    }
-
     public static void Pause()
     {
         isPaused = !isPaused;
