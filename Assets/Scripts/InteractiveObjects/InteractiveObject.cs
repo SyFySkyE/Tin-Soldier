@@ -15,6 +15,7 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     public virtual string DisplayText => this.displayText;
     protected AudioSource objAudioSource;
 
+    public event System.Action OnInteract;
     public static event System.Action OnLookedAtStateChange;
     public static event System.Action<string> OnUseText;
     private Vector3 spawnPos;
@@ -30,6 +31,7 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     {        
         if (isReuseable || !hasBeenUsed)
         {
+            OnInteract?.Invoke();
             OnUseText?.Invoke(useText);
             objAudioSource.Play();
             hasBeenUsed = true;

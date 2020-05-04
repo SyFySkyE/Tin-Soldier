@@ -27,8 +27,10 @@ public class TutorialText : MonoBehaviour
     [SerializeField] private string jetpackText = "You've equipped a jetpack. Press Space to jump, and hold space while jumping to ascend.";
     [SerializeField] private string energyUsageText = "Your jetpack energy is represented by a meter. If it empties, you will fall. It recharges when not in use.";
 
+    [SerializeField] private bool showInventoryTutorial;
     private TextMeshProUGUI tutorialText;
     private Animator textAnim;
+    private bool hasOpenedInventory;    
 
     public static TutorialText Instance
     {
@@ -50,8 +52,19 @@ public class TutorialText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hasOpenedInventory = false;
+        InventoryMenu.OnUseInventory += InventoryMenu_OnUseInventory;
         textAnim = GetComponent<Animator>();
         tutorialText = GetComponent<TextMeshProUGUI>();
+    }
+
+    private void InventoryMenu_OnUseInventory()
+    {
+        if (!hasOpenedInventory)
+        {
+            hasOpenedInventory = true;
+            PlayTutorialText(Tutorials.ExitInventory);
+        }
     }
 
     public void PlayTutorialText(Tutorials tutorialToPlay)

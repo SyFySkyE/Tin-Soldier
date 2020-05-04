@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class InventoryMenu : MonoBehaviour
@@ -17,7 +15,8 @@ public class InventoryMenu : MonoBehaviour
     private AudioSource canvasInventoryAudioSource;
     private CanvasGroup canvasGroup;
     private FirstPersonController player;
-    private Animator inventoryAnim;    
+    private Animator inventoryAnim;
+    public static event System.Action OnUseInventory;
     private static InventoryMenu instance;
     public static InventoryMenu Instance
     {
@@ -68,6 +67,7 @@ public class InventoryMenu : MonoBehaviour
 
     private void ToggleMenu()
     {
+        OnUseInventory?.Invoke();
         canvasInventoryAudioSource.Play();
         isMenuOpen = !isMenuOpen;
         if (player == null)

@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialInteract : InteractiveObject
+public class TutorialInteract : MonoBehaviour 
 {
     [SerializeField] private Tutorials tutorialToShow;
+    private InteractiveObject interactiveObjToListen;
 
-    public override void Interact()
+    private void Start()
+    {
+        interactiveObjToListen = GetComponent<InteractiveObject>();
+        interactiveObjToListen.OnInteract += InteractiveObjToListen_OnInteract;
+    }
+
+    private void InteractiveObjToListen_OnInteract()
     {
         TutorialText.Instance.PlayTutorialText(tutorialToShow);
     }
