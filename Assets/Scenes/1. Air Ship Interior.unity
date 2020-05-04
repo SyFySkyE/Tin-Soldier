@@ -37636,6 +37636,7 @@ GameObject:
   - component: {fileID: 1962158532}
   - component: {fileID: 1962158531}
   - component: {fileID: 1962158530}
+  - component: {fileID: 1962158533}
   m_Layer: 5
   m_Name: Tutorial Text
   m_TagString: Untagged
@@ -37674,6 +37675,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afce12055c1db6d4096ad3bbec5f3641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactText: You can interact with certain objects by targeting them and pressing
+    "E"
+  readText: Press "E" again to stop reading
+  inventoryText: Access your internal inventory by pressing "Tab" or "I"
+  exitInventoryText: Exit by pressing "Tab" or "I" again
+  sprintText: Hold down "Left Shift" to sprint
+  lockedText: This door requires a key card to enter
+  jetpackText: You've equipped a jetpack. Press Space to jump, and hold space while
+    jumping to ascend.
+  energyUsageText: Your jetpack energy is represented by a meter. If it empties, you
+    will fall. It recharges when not in use.
 --- !u!114 &1962158531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37793,6 +37805,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962158528}
   m_CullTransparentMesh: 0
+--- !u!95 &1962158533
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962158528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f20e7fe27229d81449aa98bddb0056cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1965049720
 PrefabInstance:
   m_ObjectHideFlags: 0
