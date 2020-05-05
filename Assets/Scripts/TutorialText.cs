@@ -12,7 +12,8 @@ public enum Tutorials
     Sprint,
     LockedDoor,
     Jetpack,
-    Move
+    Move,
+    Energy
 }
 
 public class TutorialText : MonoBehaviour
@@ -94,6 +95,9 @@ public class TutorialText : MonoBehaviour
                 break;
             case Tutorials.Move:
                 tutorialText.text = moveText;
+                break;
+            case Tutorials.Energy:
+                tutorialText.text = energyUsageText;
                 break;
         }
         textAnim.SetTrigger("Tutorial");

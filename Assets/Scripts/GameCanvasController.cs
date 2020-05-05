@@ -24,7 +24,10 @@ public class GameCanvasController : MonoBehaviour
 
     private void Weapon_OnWeaponSwitch(bool isGun)
     {
-        canvasAnim.SetBool("OnWeaponEquip", isGun);
+        if (canvasAnim != null)
+        {
+            canvasAnim.SetBool("OnWeaponEquip", isGun);
+        }        
     }
 
     private void LevelTransition_OnLevelEnd()

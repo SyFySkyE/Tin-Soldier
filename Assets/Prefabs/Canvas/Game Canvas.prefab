@@ -914,7 +914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -493}
+  m_AnchoredPosition: {x: 0, y: -373}
   m_SizeDelta: {x: 1920, y: 186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1962158532
@@ -1056,10 +1056,10 @@ MonoBehaviour:
   exitInventoryText: Exit by pressing "Tab" or "I" again
   sprintText: Hold down "Left Shift" to sprint
   lockedText: This door requires a key card to enter
-  jetpackText: You've equipped a jetpack. Press Space to jump, and hold space while
-    jumping to ascend.
-  energyUsageText: Your jetpack energy is represented by a meter. If it empties, you
-    will fall. It recharges when not in use.
+  jetpackText: Press Space to jump, and hold space while jumping to ascend.
+  energyUsageText: Your jetpack energy is represented by a meter. It recharges while
+    not in use.
+  showInventoryTutorial: 0
 --- !u!95 &1962158533
 Animator:
   serializedVersion: 3

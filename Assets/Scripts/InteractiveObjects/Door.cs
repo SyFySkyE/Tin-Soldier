@@ -82,7 +82,8 @@ public class Door : InteractiveObject
             }            
         }
         else
-        {            
+        {
+            TutorialText.Instance.PlayTutorialText(Tutorials.LockedDoor);
             this.useText = string.Empty;
             objAudioSource.clip = lockedDoorSfx;            
         }
