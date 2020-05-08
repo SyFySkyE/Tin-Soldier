@@ -18,4 +18,10 @@ public class TriggerTimeline : InteractiveObject
         timeline.Play();
         base.Interact();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            this.Interact();
+    }
 }

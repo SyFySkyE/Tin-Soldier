@@ -18,14 +18,21 @@ public enum Tutorials
 
 public class TutorialText : MonoBehaviour
 {
-    [SerializeField] private string moveText = "You can walk using WASD";
-    [SerializeField] private string interactText = "You can interact with certain objects by targeting them and pressing \"E\"";
-    [SerializeField] private string readText = "Press \"E\" again to stop reading";
-    [SerializeField] private string inventoryText = "Access your internal inventory by pressing \"Tab\" or \"I\"";
-    [SerializeField] private string exitInventoryText = "Exit by pressing \"Tab\" or \"I\" again";
-    [SerializeField] private string sprintText = "Hold down \"Left Shift\" to sprint";
+    [Header("What the UI Tutorial Text Will Show")]
+    [Tooltip("Since we have to \"fill in\" the buttons used via script/project settings, some strings are broken up")]
+    [SerializeField] private string moveText = "You can walk using ";
+    [SerializeField] private string interactText = "You can interact with certain objects by targeting them and pressing ";
+    [SerializeField] private string readText = "Press ";
+    [SerializeField] private string readTextTwo = " again to stop reading";
+    [SerializeField] private string inventoryText = "Access your internal inventory by pressing ";
+    [SerializeField] private string exitInventoryText = "Exit by pressing ";
+    [SerializeField] private string exitInventoryTextTwo = " again";
+    [SerializeField] private string sprintText = "Hold down ";
+    [SerializeField] private string sprintTextTwo = " to sprint";
     [SerializeField] private string lockedText = "You need to find a badge with elevated privileges to open this door.";
-    [SerializeField] private string jetpackText = "You've equipped a jetpack. Press Space to jump, and hold space while jumping to ascend.";
+    [SerializeField] private string jetpackText = "You've equipped a jetpack. Press ";
+    [SerializeField] private string jetpackTextTwo = " to jump, and hold ";
+    [SerializeField] private string jetpackTextThree = " while jumping to ascend.";
     [SerializeField] private string energyUsageText = "Your jetpack energy is represented by a meter. If it empties, you will fall. It recharges when not in use.";
 
     [SerializeField] private bool showInventoryTutorial;
@@ -52,7 +59,7 @@ public class TutorialText : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         hasOpenedInventory = false;
         InventoryMenu.OnUseInventory += InventoryMenu_OnUseInventory;
         textAnim = GetComponent<Animator>();
@@ -73,28 +80,28 @@ public class TutorialText : MonoBehaviour
         switch (tutorialToPlay)
         {
             case Tutorials.Interact:
-                tutorialText.text = interactText;
+                tutorialText.text = interactText + "\"|<color=orange>E</color>|\"";
                 break;
             case Tutorials.Inventory:
-                tutorialText.text = inventoryText;
+                tutorialText.text = inventoryText + "\"|<color=orange>Tab</color>|\" or \"|<color=orange>I</color>|\"";
                 break;
             case Tutorials.Read:
-                tutorialText.text = readText;
+                tutorialText.text = readText + "\"|<color=orange>E</color>|\"" + readTextTwo;
                 break;
             case Tutorials.ExitInventory:
-                tutorialText.text = exitInventoryText;
+                tutorialText.text = exitInventoryText + "\"|<color=orange>Tab</color>|\" or \"|<color=orange>I</color>|\"" + exitInventoryTextTwo;
                 break;
             case Tutorials.Sprint:
-                tutorialText.text = sprintText;
+                tutorialText.text = sprintText + "\"|<color=orange>Sprint</color>|\"" + sprintTextTwo;
                 break;
             case Tutorials.Jetpack:
-                tutorialText.text = jetpackText;
+                tutorialText.text = jetpackText + "\"|<color=orange>Space</color>|\"" + jetpackTextTwo + "\"|<color=orange>Space</color>|\"" + jetpackTextThree;
                 break;
             case Tutorials.LockedDoor:
                 tutorialText.text = lockedText;
                 break;
             case Tutorials.Move:
-                tutorialText.text = moveText;
+                tutorialText.text = moveText + "\"|<color=orange>WASD</color>|\"";
                 break;
             case Tutorials.Energy:
                 tutorialText.text = energyUsageText;
