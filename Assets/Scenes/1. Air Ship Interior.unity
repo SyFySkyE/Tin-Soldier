@@ -41163,12 +41163,12 @@ PrefabInstance:
     - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
         type: 3}
       propertyPath: m_JumpSound.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
         type: 3}
       propertyPath: m_LandSound.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
         type: 3}
@@ -41223,6 +41223,21 @@ PrefabInstance:
     - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
         type: 3}
       propertyPath: m_LandSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f61e1d9586a7e742b154a3ad1f252d9, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_JumpSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b507c0324a4ff4f46991537daaa5e16c, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_LandSound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 94695506405b362468bf4c5758666a74, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_LandSound.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 374d78d564eb35b4c809693b2d1ad7db, type: 3}
     m_RemovedComponents:
