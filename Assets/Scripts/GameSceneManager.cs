@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour
 {
+    public static event System.Action<int> OnSceneLoad; // Gotta send an int over due to GetSceneIndex returning the old index
+
     public void LoadNextScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -14,20 +16,26 @@ public class GameSceneManager : MonoBehaviour
             SceneManager.LoadScene(0);
         }
         else
-        {            
-            SceneManager.LoadScene(currentSceneIndex + 1);
+        {
+            currentSceneIndex++;
+            SceneManager.LoadScene(currentSceneIndex);            
+            OnSceneLoad?.Invoke(currentSceneIndex);
         }
     }
 
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Title Screen");
-        Debug.Log("Leading Main Menu");
     }
 
     public void ReloadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public int GetCurrentSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
     }
 
     public void Quit()

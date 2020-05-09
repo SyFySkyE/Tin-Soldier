@@ -14,7 +14,6 @@ public class DebugSceneHopper : MonoBehaviour
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             Debug.Log(currentSceneIndex);
-            Debug.Log(SceneManager.sceneCountInBuildSettings);
             if (currentSceneIndex + 1 >= SceneManager.sceneCountInBuildSettings)
             {
                 Debug.LogWarning("Debug Scene Hopper attempted to load a scene index greater than the ones avaliable. Reloading first scene...");

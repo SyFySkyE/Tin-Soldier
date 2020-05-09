@@ -12,6 +12,9 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     [Header("Check this if player can retoggle object")]
     [SerializeField] protected bool isReuseable;
     protected bool hasBeenUsed = false;
+    [SerializeField] protected Material outlineShader;
+    protected Material initialMaterial;
+    private Renderer objectRenderer;
     public virtual string DisplayText => this.displayText;
     protected AudioSource objAudioSource;
 
@@ -20,9 +23,12 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     public static event System.Action<string> OnUseText;
     private Vector3 spawnPos;
     private float yTriggerRespawn = -100f; // At what y to trigger respawn
+    private bool isBeingLookedAt;
 
     protected virtual void Awake()
-    {
+    {       
+        objectRenderer = GetComponentInChildren<Renderer>();
+        initialMaterial = objectRenderer.material;
         spawnPos = transform.position; // Where to respawn if falls off map
         objAudioSource = GetComponent<AudioSource>();
     }
@@ -49,8 +55,19 @@ public class InteractiveObject : MonoBehaviour, IInteractable
         {
             this.transform.position = this.spawnPos;
         }
+        if (isBeingLookedAt)
+        {
+            if (this.objectRenderer.material != outlineShader)
+            {
+                this.objectRenderer.material = outlineShader;
+            }
+            else // TODO These don't need to be set every frame!
+            {
+                this.objectRenderer.material = initialMaterial;
+            }
+        }
     }
-
+    
     protected void StateChange()
     {
         OnLookedAtStateChange?.Invoke();
