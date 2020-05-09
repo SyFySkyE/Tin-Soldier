@@ -16045,6 +16045,7 @@ MonoBehaviour:
   useText: 
   isReuseable: 0
   timeline: {fileID: 224773571}
+  isTrigger: 0
 --- !u!82 &709508727
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18230,7 +18231,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: afadf710becf4264aa300fb4e8300cb8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -33284,6 +33285,7 @@ MonoBehaviour:
   useText: 
   isReuseable: 0
   timeline: {fileID: 224773571}
+  isTrigger: 0
 --- !u!43 &1473121074
 Mesh:
   m_ObjectHideFlags: 0
@@ -41155,9 +41157,74 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
         type: 3}
+      propertyPath: m_FootstepSounds.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_JumpSound.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_LandSound.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_FootstepSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: aafe25e39d474a24999270aaa99f4048, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_FootstepSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6eb75ff36ab48b843953c34eca29f386, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_FootstepSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b87a5a531474204d8649686c56ceae7, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_FootstepSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: e294e0c3b431c5248adfa5cc4a59f31f, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_FootstepSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: b01e3507740ebdf4b826e42c2bc4cb8b, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_FootstepSounds.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 42227f2a31abcdc4e9ec43a22c19ae62, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_FootstepSounds.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: a574af66cb1cfb04da533ab5af7fe7e4, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_LandSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_JumpSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 18ffdf150c99a024a9705d5d5d8b07b0, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_LandSound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 374d78d564eb35b4c809693b2d1ad7db, type: 3}
     m_RemovedComponents:
     - {fileID: 773737655, guid: 5658fa9005894e4429272794a7151654, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5658fa9005894e4429272794a7151654, type: 3}
