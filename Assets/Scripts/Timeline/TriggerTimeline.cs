@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerTimeline : InteractiveObject
+public class TriggerTimeline : InteractiveObject // TODO Probably doesn't need to be an interactive. There's a few triggers like these, would have been better to subclass and use strategy
 {
     [Header("Timeline to activate")]
     [SerializeField] private UnityEngine.Playables.PlayableDirector timeline;
+    [SerializeField] private bool isTrigger;
 
     protected override void Awake()
     {
@@ -21,7 +22,7 @@ public class TriggerTimeline : InteractiveObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isTrigger)
             this.Interact();
     }
 }
