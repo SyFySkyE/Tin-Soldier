@@ -28,7 +28,10 @@ public class InteractiveObject : MonoBehaviour, IInteractable
     protected virtual void Awake()
     {       
         objectRenderer = GetComponentInChildren<Renderer>();
-        initialMaterial = objectRenderer.material;
+        if (objectRenderer != null)
+        {
+            initialMaterial = objectRenderer.material;
+        }        
         spawnPos = transform.position; // Where to respawn if falls off map
         objAudioSource = GetComponent<AudioSource>();
     }
@@ -39,7 +42,14 @@ public class InteractiveObject : MonoBehaviour, IInteractable
         {
             OnInteract?.Invoke();
             OnUseText?.Invoke(useText);
-            objAudioSource.Play();
+            if (objAudioSource.clip != null) 
+            {
+                objAudioSource.Play();
+            }
+            else
+            {
+                Debug.LogWarning(this.gameObject + " tried to play a null clip");
+            }
             hasBeenUsed = true;
             if (!this.isReuseable)
             {                

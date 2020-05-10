@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelTransition : MonoBehaviour
 {
+    [SerializeField] private bool loadPreviousLevel;
     private GameSceneManager sceneManager;
     private Animator levelAnim;
 
@@ -21,12 +22,24 @@ public class LevelTransition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             OnLevelEnd?.Invoke();
-            levelAnim.SetTrigger("EndLevel");
+            if (loadPreviousLevel)
+            {
+                levelAnim.SetTrigger("PreviousLevel");
+            }
+            else
+            {
+                levelAnim.SetTrigger("EndLevel");
+            }            
         }
     }
 
     public void LoadNextLevel() // To be used by anim
     {
         sceneManager.LoadNextScene();
+    }
+
+    public void LoadPreviousLevel() // To be used by anim
+    {
+        sceneManager.LoadPreviousScene();
     }
 }

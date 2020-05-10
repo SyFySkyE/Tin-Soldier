@@ -17266,19 +17266,21 @@ PrefabInstance:
     - target: {fileID: 2651508781904234952, guid: ed4b86dbf93649a41a052747d06db2e4,
         type: 3}
       propertyPath: objectText
-      value: 'Cyrr Weekly News #1'
+      value: 'Cyrr Weekly News #3'
       objectReference: {fileID: 0}
     - target: {fileID: 2651508781904234952, guid: ed4b86dbf93649a41a052747d06db2e4,
         type: 3}
       propertyPath: description
-      value: Yesterday morning, the Leading Council has announced that another nation
-        has graciously allied with the Cyrr nation. The nation known as Pottawatomi
-        located south-western of the Cyrr capital is said to be filled with mineral-rich
-        deposits such as Lignite, which you'll find is used in electricity, home-heating
-        and aircraft appliances. In return for these minerals, Cyrr plans to give
-        the neighboring nation hospitality and resources to encourage stability and
-        develop infrastructure. "This is the beginning of a long, mutually beneficial
-        relationship," the Leading Council states in a posted memo.
+      value: "At approximately 03:30 this morning many inhabitants in the Cyrr Capital
+        woke up to sounds of explosions and gunfire in the distance. The cacophony
+        originated from within the military base holding dozens of Phi android militants.
+        It is still unknown at this time what caused the incident. The Leading Council
+        has released a press statement indicating that after speaking with the base\u2019s
+        commanding office, the only human residing in said base, that everything and
+        under control and that there is nothing to worry about. Despite this, some
+        citizens continue to speculate on whether the incident was a military exercise
+        or even a terrorist action. The Leading Council declined to comment and reminds
+        its citizens that spreading false information can be a criminal offense. "
       objectReference: {fileID: 0}
     - target: {fileID: 2651508781904234952, guid: ed4b86dbf93649a41a052747d06db2e4,
         type: 3}
@@ -17295,7 +17297,7 @@ PrefabInstance:
         type: 3}
       propertyPath: thisReadImage
       value: 
-      objectReference: {fileID: 21300000, guid: 2e4659f859357cc469cf9fa35fbde4ec,
+      objectReference: {fileID: 21300000, guid: 3d0a42cd769ca87428acb3279eac43b6,
         type: 3}
     - target: {fileID: 2651508781904234954, guid: ed4b86dbf93649a41a052747d06db2e4,
         type: 3}
@@ -41873,7 +41875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 215532905, guid: 29bc963fe621c6e4799593a47483e419, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 436516648, guid: 29bc963fe621c6e4799593a47483e419, type: 3}
       propertyPath: m_Material
@@ -41901,7 +41903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1962158529, guid: 29bc963fe621c6e4799593a47483e419, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1962158530, guid: 29bc963fe621c6e4799593a47483e419, type: 3}
       propertyPath: moveText
@@ -42685,7 +42687,7 @@ PrefabInstance:
     - target: {fileID: 1432497478276934742, guid: 548206e78d3f17247ae6d558b6418290,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1432497478612597966, guid: 548206e78d3f17247ae6d558b6418290,
         type: 3}

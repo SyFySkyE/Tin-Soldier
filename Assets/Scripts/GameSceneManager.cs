@@ -23,6 +23,22 @@ public class GameSceneManager : MonoBehaviour
         }
     }
 
+    public void LoadPreviousScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex - 1 < 0)
+        {
+            Debug.LogWarning("Game Scene Manager attempted to load a scene index greater than the ones avaliable. Reloading first scene...");
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            currentSceneIndex--;
+            SceneManager.LoadScene(currentSceneIndex);
+            OnSceneLoad?.Invoke(currentSceneIndex);
+        }
+    }
+
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Title Screen");
