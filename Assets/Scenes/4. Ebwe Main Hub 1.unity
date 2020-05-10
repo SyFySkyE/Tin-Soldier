@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27528dadf16eaed4e8b819c43a8785cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndexesToPersist: 0400000005000000
+  sceneIndexesToPersist: 040000000500000006000000
 --- !u!43 &83177816
 Mesh:
   m_ObjectHideFlags: 0
@@ -2818,6 +2818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 468033135}
   - component: {fileID: 468033136}
+  - component: {fileID: 468033137}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -2866,8 +2867,53 @@ PlayableDirector:
     value: {fileID: 1396525580}
   - key: {fileID: 9110056353627343492, guid: acf9d1c4056269048aa9f62d9b030e7c, type: 2}
     value: {fileID: 51518664}
+  - key: {fileID: 6302578256035267770, guid: acf9d1c4056269048aa9f62d9b030e7c, type: 2}
+    value: {fileID: 1498407710}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &468033137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468033134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 08ca774aced02814c86c90a705c91084, type: 2}
+    - {fileID: 11400000, guid: 9247c465f470003498ec1b0db480910e, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 808841533}
+          m_MethodName: ChangeControlState
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 808841533}
+          m_MethodName: ChangeControlState
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!43 &486297639
 Mesh:
   m_ObjectHideFlags: 0
@@ -6396,6 +6442,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &808841533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+    type: 3}
+  m_PrefabInstance: {fileID: 808841530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808841531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &814766165
 Mesh:
   m_ObjectHideFlags: 0
@@ -12869,6 +12927,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1432497478276934742, guid: 548206e78d3f17247ae6d558b6418290,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1432497478612597966, guid: 548206e78d3f17247ae6d558b6418290,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -12901,6 +12964,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 548206e78d3f17247ae6d558b6418290, type: 3}
+--- !u!1 &1498407710 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1432497478276934742, guid: 548206e78d3f17247ae6d558b6418290,
+    type: 3}
+  m_PrefabInstance: {fileID: 1498407709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1507581758
 Mesh:
   m_ObjectHideFlags: 0

@@ -30,8 +30,8 @@ public class InventoryMenu : MonoBehaviour
         }
         private set { instance = value; }
     }
+    private bool isPlayerActive;
     private bool isMenuOpen = false;
-
     private void OnEnable()
     {
         InventoryMenuItemToggle.InventoryMenuItemSelected += InventoryMenuItemToggle_InventoryMenuItemSelected;
@@ -50,7 +50,13 @@ public class InventoryMenu : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();        
         inventoryAnim = GetComponent<Animator>();
         player = FindObjectOfType<FirstPersonController>();
-        canvasInventoryAudioSource = GetComponent<AudioSource>();        
+        canvasInventoryAudioSource = GetComponent<AudioSource>();
+        FirstPersonController.OnControlStateChange += FirstPersonController_OnControlStateChange;
+    }
+
+    private void FirstPersonController_OnControlStateChange(bool obj)
+    {
+        isPlayerActive = obj;
     }
 
     private void InventoryMenuItemToggle_InventoryMenuItemSelected(InventoryObject selectedInventoryObject)
@@ -110,7 +116,7 @@ public class InventoryMenu : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerCurrentState.currentPlayerState != PlayerState.Reading)
+        if (PlayerCurrentState.currentPlayerState != PlayerState.Reading && isPlayerActive)
         {
             if (Input.GetButtonDown("OpenInventory"))
             {

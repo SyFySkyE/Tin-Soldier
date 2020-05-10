@@ -47,13 +47,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float initialGravityModifier;
 
         public event Action<bool> OnSprint;
+        public static event Action<bool> OnControlStateChange;
 
         float startingXSensitivity;
         float startingYSensitivity;
 
+        public void ToggleMouseLook(bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                m_MouseLook.XSensitivity = startingXSensitivity;
+                m_MouseLook.YSensitivity = startingYSensitivity;
+            }
+            else
+            {
+                m_MouseLook.XSensitivity = 0f;
+                m_MouseLook.YSensitivity = 0f;
+            }
+        }
+
+        public void ChangeControlState(bool isEnabled) // Activated by timelines. Workaround so we can turn on inv in cutscenes
+        {
+            OnControlStateChange?.Invoke(isEnabled);
+        }
+
         // Use this for initialization
         private void Start()
-        {
+        {            
             initialGravityModifier = m_GravityMultiplier;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -79,7 +99,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void OnDisable()
         {
-            LevelTransition.OnLevelEnd -= LevelTransition_OnLevelEnd;
+            LevelTransition.OnLevelEnd -= LevelTransition_OnLevelEnd;            
         }
 
         private void PauseController_OnPause(bool obj)

@@ -360,6 +360,8 @@ PlayableDirector:
     value: {fileID: 515634593}
   - key: {fileID: -2264116476920012419, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
     value: {fileID: 298952613}
+  - key: {fileID: 6673984909799252266, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
+    value: {fileID: 1390668321}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &298952615
@@ -388,6 +390,7 @@ Transform:
   - {fileID: 1732696339}
   - {fileID: 2079322387}
   - {fileID: 4000012913141687}
+  - {fileID: 1390668323}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -406,12 +409,26 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 3bfcdf10ffc631940abf71dbd2ccecd6, type: 2}
+    - {fileID: 11400000, guid: 9247c465f470003498ec1b0db480910e, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 298952615}
           m_MethodName: EndGame
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1309625750}
+          m_MethodName: ChangeControlState
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5784,7 +5801,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh289094
+  m_Name: pb_Mesh501492
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6659,6 +6676,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1309625748}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1309625750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+    type: 3}
+  m_PrefabInstance: {fileID: 1309625748}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1313675089 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2582957609969428497, guid: db10e24fa37dfe84c9d3fd31a84cbbd5,
@@ -6699,6 +6728,7 @@ MonoBehaviour:
   displayText: ???
   useText: Used...
   isReuseable: 0
+  outlineShader: {fileID: 0}
 --- !u!114 &1313675097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6711,6 +6741,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c367b04dcd04fcc45bc58a9a0946e34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1390668321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390668323}
+  - component: {fileID: 1390668322}
+  m_Layer: 0
+  m_Name: Listener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!81 &1390668322
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390668321}
+  m_Enabled: 1
+--- !u!4 &1390668323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390668321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 298952616}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1453843768
 GameObject:
   m_ObjectHideFlags: 0
