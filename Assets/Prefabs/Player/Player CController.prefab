@@ -321,19 +321,6 @@ CapsuleCollider:
   m_Height: 3.12
   m_Direction: 1
   m_Center: {x: 0, y: 3.47, z: 0}
---- !u!114 &1548606970077644643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993620891833434110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f552fd9c7053c9a4aacefa6d1a5a9ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yPosRespawnTrigger: -100
 --- !u!114 &5052111411287921454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +334,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yPosRespawnTrigger: -100
+--- !u!1 &3983452117225857081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 648429139396148702}
+  - component: {fileID: 1442064345694241008}
+  m_Layer: 2
+  m_Name: HandLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &648429139396148702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983452117225857081}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.58635473, y: -0.45749998, z: 1.0307468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 993620891833525212}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1442064345694241008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3983452117225857081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6e1301f1aeaa84c8086ac83912ea69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons: []
+  unarmedObj: {fileID: 7285414606672180353, guid: 01e34cbe0be3ac646a5f4bc4346f49a1,
+    type: 3}
 --- !u!1001 &1279509801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,6 +644,12 @@ GameObject:
 --- !u!4 &993620891833525214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 993620891833399646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &993620891833525212 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0,
     type: 3}
   m_PrefabInstance: {fileID: 993620891833399646}
   m_PrefabAsset: {fileID: 0}
