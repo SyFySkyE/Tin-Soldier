@@ -73,6 +73,18 @@ public class InventoryMenu : MonoBehaviour
 
     private void ToggleMenu()
     {
+        if (PlayerCurrentState.CurrentPlayerState != PlayerState.Reading)
+        {
+            if (PlayerCurrentState.CurrentPlayerState == PlayerState.None)
+            {
+                PlayerCurrentState.CurrentPlayerState = PlayerState.LookingInInventory;
+            }
+            else
+            {
+                PlayerCurrentState.CurrentPlayerState = PlayerState.None;
+            }
+        }
+        
         OnUseInventory?.Invoke();
         canvasInventoryAudioSource.Play();
         isMenuOpen = !isMenuOpen;
@@ -98,6 +110,7 @@ public class InventoryMenu : MonoBehaviour
             isMenuOpen = false;
             inventoryAnim.SetBool("MenuOpen", isMenuOpen);
             canvasInventoryAudioSource.Play();
+            PlayerCurrentState.CurrentPlayerState = PlayerState.None;
         }
     }
 
@@ -116,7 +129,7 @@ public class InventoryMenu : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerCurrentState.currentPlayerState != PlayerState.Reading && isPlayerActive)
+        if (PlayerCurrentState.CurrentPlayerState != PlayerState.Reading && isPlayerActive)
         {
             if (Input.GetButtonDown("OpenInventory"))
             {

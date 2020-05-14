@@ -24,7 +24,7 @@ public class PlayerInteractWithInteractable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact") && lookedAtInteractable != null)
+        if (Input.GetButtonDown("Interact") && lookedAtInteractable != null && PlayerCurrentState.CurrentPlayerState != PlayerState.LookingInInventory)
         {
             lookedAtInteractable.Interact();
         }   

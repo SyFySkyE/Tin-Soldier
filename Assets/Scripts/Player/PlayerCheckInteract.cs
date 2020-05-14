@@ -76,7 +76,6 @@ public class PlayerCheckInteract : MonoBehaviour
         {
             currentObjInSightHashCode = 0;
         }
-
         return interactiveObj;
     }
 }

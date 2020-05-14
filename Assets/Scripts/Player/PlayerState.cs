@@ -5,10 +5,11 @@ using UnityEngine;
 public enum PlayerState 
 {
     None,
-    Reading
+    Reading,
+    LookingInInventory
 }
 
 public static class PlayerCurrentState
 {
-    public static PlayerState currentPlayerState = PlayerState.None;
+    public static PlayerState CurrentPlayerState = PlayerState.None;
 }

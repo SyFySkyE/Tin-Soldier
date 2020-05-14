@@ -20,15 +20,15 @@ public class ReadInteractive : InventoryObject, IReadable
 
     public override void Interact()
     {
-        if (PlayerCurrentState.currentPlayerState != PlayerState.Reading)
+        if (PlayerCurrentState.CurrentPlayerState != PlayerState.Reading)
         {
-            PlayerCurrentState.currentPlayerState = PlayerState.Reading;
+            PlayerCurrentState.CurrentPlayerState = PlayerState.Reading;
             Read();
             base.Interact();            
         }
         else
         {
-            PlayerCurrentState.currentPlayerState = PlayerState.None;
+            PlayerCurrentState.CurrentPlayerState = PlayerState.None;
             OnCancelRead?.Invoke();
         }
         PauseController.Pause();

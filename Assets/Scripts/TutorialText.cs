@@ -80,28 +80,28 @@ public class TutorialText : MonoBehaviour
         switch (tutorialToPlay)
         {
             case Tutorials.Interact:
-                tutorialText.text = interactText + "\"|<color=orange>E</color>|\"";
+                tutorialText.text = interactText + "<color=orange>E</color>";
                 break;
             case Tutorials.Inventory:
-                tutorialText.text = inventoryText + "\"|<color=orange>Tab</color>|\" or \"|<color=orange>I</color>|\"";
+                tutorialText.text = inventoryText + "<color=orange>Tab</color> or <color=orange>I</color>";
                 break;
             case Tutorials.Read:
-                tutorialText.text = readText + "\"|<color=orange>E</color>|\"" + readTextTwo;
+                tutorialText.text = readText + "<color=orange>E</color>" + readTextTwo;
                 break;
             case Tutorials.ExitInventory:
-                tutorialText.text = exitInventoryText + "\"|<color=orange>Tab</color>|\" or \"|<color=orange>I</color>|\"" + exitInventoryTextTwo;
+                tutorialText.text = exitInventoryText + "<color=orange>Tab</color> or <color=orange>I</color>" + exitInventoryTextTwo;
                 break;
             case Tutorials.Sprint:
-                tutorialText.text = sprintText + "\"|<color=orange>Sprint</color>|\"" + sprintTextTwo;
+                tutorialText.text = sprintText + "<color=orange>Shift</color>" + sprintTextTwo;
                 break;
             case Tutorials.Jetpack:
-                tutorialText.text = jetpackText + "\"|<color=orange>Space</color>|\"" + jetpackTextTwo + "\"|<color=orange>Space</color>|\"" + jetpackTextThree;
+                tutorialText.text = jetpackText + "<color=orange>Space</color>" + jetpackTextTwo + "<color=orange>Space</color>" + jetpackTextThree;
                 break;
             case Tutorials.LockedDoor:
                 tutorialText.text = lockedText;
                 break;
             case Tutorials.Move:
-                tutorialText.text = moveText + "\"|<color=orange>WASD</color>|\"";
+                tutorialText.text = moveText + "<color=orange>WASD</color>";
                 break;
             case Tutorials.Energy:
                 tutorialText.text = energyUsageText;
