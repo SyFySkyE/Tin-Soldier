@@ -17,7 +17,8 @@ public class NPC : InteractiveObject
         if (!objAudioSource.isPlaying)
         {
             objAudioSource.clip = voiceClips[Random.Range(0, voiceClips.Count)];
-            timeline.Play();
+            if (!this.hasBeenUsed || this.isReuseable)
+                timeline.Play();
             foreach (GameObject go in objectsToEnable)
             {
                 go.SetActive(true);
