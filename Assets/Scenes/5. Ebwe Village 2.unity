@@ -18293,9 +18293,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndLevel
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 390879820935761358, guid: f67d9614dbd0c284e95fd89b43a0a7bf, type: 3}
-    - {fileID: 390879820935761359, guid: f67d9614dbd0c284e95fd89b43a0a7bf, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f67d9614dbd0c284e95fd89b43a0a7bf, type: 3}
 --- !u!43 &1757873166
 Mesh:
@@ -18680,7 +18678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1783268770
 Transform:
   m_ObjectHideFlags: 0
