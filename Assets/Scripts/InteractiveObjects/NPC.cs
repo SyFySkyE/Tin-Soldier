@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class NPC : InteractiveObject
 {
@@ -9,12 +10,15 @@ public class NPC : InteractiveObject
 
     [SerializeField] private GameObject[] objectsToEnable; // TODO this is not good, NPC should not be responsible for this!
 
+    [SerializeField] private PlayableDirector timeline;
+
     public override void Interact()
     {
         if (!objAudioSource.isPlaying)
         {
             objAudioSource.clip = voiceClips[Random.Range(0, voiceClips.Count)];
-            foreach(GameObject go in objectsToEnable)
+            timeline.Play();
+            foreach (GameObject go in objectsToEnable)
             {
                 go.SetActive(true);
             }
