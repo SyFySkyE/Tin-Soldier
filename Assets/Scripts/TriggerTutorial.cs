@@ -10,7 +10,7 @@ public class TriggerTutorial : MonoBehaviour
     [SerializeField] private bool firstTutorial;
     [SerializeField] private float secondsBeforeShowNextTutorial;
 
-    [SerializeField] private float tutorialRepeatInterval = 15f;
+    [SerializeField] private float tutorialRepeatInterval;
 
     private void Start()
     {
@@ -18,11 +18,16 @@ public class TriggerTutorial : MonoBehaviour
         {
             SendTutorial();
             StartCoroutine(StartInteractTutorial());
-        }
+        }        
+    }
 
+    private void OnEnable()
+    {
         if (tutorialRepeatInterval != 0)
         {
-            StartCoroutine(ShowTutorialRoutine());
+            if (this.gameObject.activeInHierarchy)
+                this.gameObject.SetActive(true);
+                StartCoroutine(ShowTutorialRoutine());
         }
     }
 
