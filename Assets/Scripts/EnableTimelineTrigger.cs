@@ -7,6 +7,7 @@ public class EnableTimelineTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject objectWithTriggerTimeline;
     private TriggerTimeline triggerTimelineToEnable;
+
     private void Awake()
     {
         triggerTimelineToEnable = objectWithTriggerTimeline.GetComponent<TriggerTimeline>();
