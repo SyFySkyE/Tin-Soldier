@@ -41378,6 +41378,11 @@ PrefabInstance:
       propertyPath: m_LandSound.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 374d78d564eb35b4c809693b2d1ad7db, type: 3}
+    - target: {fileID: 993620891840481822, guid: 5658fa9005894e4429272794a7151654,
+        type: 3}
+      propertyPath: m_RunSpeed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 773737655, guid: 5658fa9005894e4429272794a7151654, type: 3}
     - {fileID: 1548606970077644643, guid: 5658fa9005894e4429272794a7151654, type: 3}
