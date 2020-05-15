@@ -112,6 +112,7 @@ public class TutorialText : MonoBehaviour
                 tutorialText.text = bedText;
                 break;
         }
-        textAnim.SetTrigger("Tutorial");
+        if (textAnim != null)
+            textAnim.SetTrigger("Tutorial");
     }
 }

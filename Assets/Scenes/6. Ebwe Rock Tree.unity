@@ -456,6 +456,12 @@ PlayableDirector:
     value: {fileID: 860089750}
   - key: {fileID: 4230407756950921422, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
     value: {fileID: 1226106444}
+  - key: {fileID: -5184847531487898389, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
+    value: {fileID: 7261881068758425497}
+  - key: {fileID: 2142041459375715072, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
+    value: {fileID: 1313675089}
+  - key: {fileID: -7333755469980597500, guid: ee185fcfbca73e64fa9097bc1a919a16, type: 2}
+    value: {fileID: 1226106447}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &298952615
@@ -6315,6 +6321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1226106446}
   - component: {fileID: 1226106445}
+  - component: {fileID: 1226106447}
   m_Layer: 0
   m_Name: Second Music Player
   m_TagString: Untagged
@@ -6334,7 +6341,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 84bfda5c25f1d6f46ae85b991849db6c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6432,6 +6439,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1226106447
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226106444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1304537517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7789,3 +7815,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fcaae578d8576748bd31f1275045652, type: 3}
+--- !u!1 &7261881068758425497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7261881069088876874, guid: 2fcaae578d8576748bd31f1275045652,
+    type: 3}
+  m_PrefabInstance: {fileID: 7261881068758425496}
+  m_PrefabAsset: {fileID: 0}

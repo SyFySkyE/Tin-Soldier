@@ -16,7 +16,10 @@ public class PlayerVoiceReceiver : MonoBehaviour
 
     private void UnityAudioTrigger_OnSoundActivate(AudioClip obj)
     {
-        playerAudioSource.clip = obj;
-        playerAudioSource.Play();
+        if (playerAudioSource != null)
+        {
+            playerAudioSource.clip = obj;
+            playerAudioSource.Play();
+        }        
     }
 }
