@@ -5712,7 +5712,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 436516648, guid: 29bc963fe621c6e4799593a47483e419, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 436516648, guid: 29bc963fe621c6e4799593a47483e419, type: 3}
       propertyPath: m_Material
@@ -6568,6 +6568,11 @@ PrefabInstance:
     - target: {fileID: 1432497477793198642, guid: 548206e78d3f17247ae6d558b6418290,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432497477793198642, guid: 548206e78d3f17247ae6d558b6418290,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1432497478022708893, guid: 548206e78d3f17247ae6d558b6418290,
