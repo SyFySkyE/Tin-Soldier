@@ -8,14 +8,14 @@ public class PlayerUnityTrigger : MonoBehaviour, ITrigger
 {
     private Collider triggerCollider;
 
-    public event Action OnTrigger;
+    public virtual event Action OnTrigger;
 
     void Start()
     {
         triggerCollider = GetComponent<Collider>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {        
         if (other.gameObject.CompareTag("Player"))
         {

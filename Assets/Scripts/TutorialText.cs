@@ -13,7 +13,8 @@ public enum Tutorials
     LockedDoor,
     Jetpack,
     Move,
-    Energy
+    Energy,
+    Bed
 }
 
 public class TutorialText : MonoBehaviour
@@ -34,6 +35,7 @@ public class TutorialText : MonoBehaviour
     [SerializeField] private string jetpackTextTwo = " to jump, and hold ";
     [SerializeField] private string jetpackTextThree = " while jumping to ascend.";
     [SerializeField] private string energyUsageText = "Your jetpack energy is represented by a meter. If it empties, you will fall. It recharges when not in use.";
+    [SerializeField] private string bedText = "Go back to bed";
 
     [SerializeField] private bool showInventoryTutorial;
     private TextMeshProUGUI tutorialText;
@@ -105,6 +107,9 @@ public class TutorialText : MonoBehaviour
                 break;
             case Tutorials.Energy:
                 tutorialText.text = energyUsageText;
+                break;
+            case Tutorials.Bed:
+                tutorialText.text = bedText;
                 break;
         }
         textAnim.SetTrigger("Tutorial");

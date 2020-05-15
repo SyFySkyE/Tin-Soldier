@@ -7,11 +7,17 @@ public class NPC : InteractiveObject
     [Header("Audio clips this NPC will say when interacted with")]
     [SerializeField] private List<AudioClip> voiceClips;
 
+    [SerializeField] private GameObject[] objectsToEnable; // TODO this is not good, NPC should not be responsible for this!
+
     public override void Interact()
     {
         if (!objAudioSource.isPlaying)
         {
             objAudioSource.clip = voiceClips[Random.Range(0, voiceClips.Count)];
+            foreach(GameObject go in objectsToEnable)
+            {
+                go.SetActive(true);
+            }
         }        
         base.Interact();
         if (this.isReuseable)
