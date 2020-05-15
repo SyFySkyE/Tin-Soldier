@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &88620380868974695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3474067812870507039}
+  m_Layer: 0
+  m_Name: Respawn Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3474067812870507039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88620380868974695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.75, y: 69.16667, z: 109.79167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3960403456865524068}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2125116374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13,6 +43,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 73.3, y: 55.600006, z: 152.62512}
   m_Center: {x: -33.469982, y: 21.5, z: 76.31256}
+--- !u!114 &7507831565338105965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960403456865524074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0029a532258281042853c2f766acdb20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 3474067812870507039}
 --- !u!1 &7534967285940329896
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,9 +68,10 @@ GameObject:
   - component: {fileID: 7534967285940329903}
   - component: {fileID: 7534967285940329902}
   - component: {fileID: 1943169748}
+  - component: {fileID: 1507353844}
   m_Layer: 0
   m_Name: Ship Holder
-  m_TagString: Untagged
+  m_TagString: AirShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,6 +125,19 @@ MonoBehaviour:
   minSpeedMultiplier: 1
   maxSpeedMultiplier: 2
 --- !u!65 &1943169748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7534967285940329896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 71.32, y: 55.1, z: 121.7}
+  m_Center: {x: -25.88, y: 29.4, z: 59.4}
+--- !u!65 &1507353844
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,6 +216,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Air Ship (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802609337922405480, guid: 66093a4140be0bd4984d572fc7df3cbc,
+        type: 3}
+      propertyPath: m_TagString
+      value: AirShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802609337922405482, guid: 66093a4140be0bd4984d572fc7df3cbc,
+        type: 3}
+      propertyPath: m_SelectedEdges.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802609337922405482, guid: 66093a4140be0bd4984d572fc7df3cbc,
+        type: 3}
+      propertyPath: m_SelectedVertices.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66093a4140be0bd4984d572fc7df3cbc, type: 3}

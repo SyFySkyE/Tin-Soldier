@@ -8,6 +8,7 @@ TagManager:
   - Canvas
   - Flight Slider
   - SceneManage
+  - AirShip
   layers:
   - Default
   - TransparentFX

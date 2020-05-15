@@ -6,20 +6,20 @@ using UnityEngine;
 public class PlayerCatch : MonoBehaviour
 {
     [Header("Y pos to trigger respawn")]
-    [SerializeField] private float yPosRespawnTrigger = -100f;
+    [SerializeField] protected float yPosRespawnTrigger = -100f;
 
-    private Vector3 spawnPos;
+    protected Vector3 spawnPos;
     private GameSceneManager gameScene;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         gameScene = FindObjectOfType<GameSceneManager>();
         spawnPos = transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (this.transform.position.y <= yPosRespawnTrigger)
         {
